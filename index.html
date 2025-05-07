@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLIND SPOT</title>
+    <title>Menu de Scroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            width: 400px;
+            height: 400px;
+            overflow-y: scroll;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .menu-item {
+            font-size: 48px;
+            padding: 20px;
+            transition: opacity 0.3s ease-in-out;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="menu">
+        <div class="menu-item">Tritanópia</div>
+        <div class="menu-item">Protanopia</div>
+        <div class="menu-item">Nistagmo</div>
+        <div class="menu-item">Glaucoma</div>
+        <div class="menu-item">Hipermetropia</div>
+        <div class="menu-item">Cataratas</div>
+        <div class="menu-item">Deuteranópia</div>
+        <div class="menu-item">Miopia</div>
+    </div>
+
+    <script>
+        const menu = document.querySelector('.menu');
+        const items = document.querySelectorAll('.menu-item');
+
+        menu.addEventListener('scroll', () => {
+            items.forEach((item) => {
+                const itemRect = item.getBoundingClientRect();
+                const menuRect = menu.getBoundingClientRect();
+                const itemCenter = itemRect.top + itemRect.height / 2;
+                const menuCenter = menuRect.top + menuRect.height / 2;
+                const distance = Math.abs(menuCenter - itemCenter);
+                const maxDistance = menuRect.height / 2;
+                const opacity = Math.max(0.3, 1 - distance / maxDistance);
+                item.style.opacity = opacity;
+            });
+        });
+    </script>
 </body>
 </html>
