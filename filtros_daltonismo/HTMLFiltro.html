@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Blindness Filters</title>
+  <link rel="stylesheet" href="StyleFiltro.css"> <!-- wtf -->
+</head>
+
+<body>
+  <!-- SVG Filter Definitions -->
+  <!-- 1. canal vermelho (R) -->
+  <!-- 2. canal verde (G) -->
+  <!-- 3. canal azul (B) -->
+  <!-- 4. canal alpha (A) -->
+
+  <!-- filtros daltonismo -->
+  <svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <filter id="tritanopia-filter">
+        <feColorMatrix type="matrix" values="
+                    0.95 0.05 0 0 0
+                    0 0.433 0.567 0 0
+                    0 0.475 0.525 0 0
+                    0 0 0 1 0" />
+      </filter>
+      <filter id="protanopia-filter">
+        <feColorMatrix type="matrix" values="
+                    0.567 0.433 0 0 0
+                    0.558 0.442 0 0 0
+                    0 0.242 0.758 0 0
+                    0 0 0 1 0" />
+      </filter>
+      <filter id="deuteranopia-filter">
+        <feColorMatrix type="matrix" values="
+                    0.625 0.375 0 0 0
+                    0.7 0.3 0 0 0
+                    0 0.3 0.7 0 0
+                    0 0 0 1 0" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div id="content">
+    <p>Daltonismo</p><br>
+    <!-- Botoes -->
+    <div class="button-container">
+      <button class="filter-button" data-filter="tritanopia">Tritanopia</button>
+      <button class="filter-button" data-filter="protanopia">Protanopia</button>
+      <button class="filter-button" data-filter="deuteranopia">Deuteranopia</button>
+      <button class="filter-button" data-filter="acromantopsia">Acromantópsia</button>
+    </div>
+
+    <br>
+
+    <!-- imagem random -->
+    <div class="image-container">
+      <!-- <img src="https://picsum.photos/500/400" alt="Sample image"> -->
+      <!-- <img src="imagens/storyboard.png" width="1000px"> -->
+
+      <video class="camera-filtros" id="camera" autoplay playsinline></video>
+    </div>
+  </div>
+
+  <script src="filtros.js"></script>
+  <script src="camara.js"></script>
+
+</body>
+
+</html>
