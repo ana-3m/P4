@@ -4,8 +4,8 @@ let camAspect;
 
 let currentFilter = 1; // 1: vertical, 2: horizontal, 3: diagonal
 
-let showGlasses = false;
-let fullScreenMode = true;
+let showGlasses = true;
+let fullScreenMode = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -24,7 +24,7 @@ function draw() {
   background(0);
   
   if (fullScreenMode) {
-  
+    !showGlasses;
     let oculos = document.getElementById('oculos');
     oculos.style.display = showGlasses ? 'block' : 'none';
     // Modo "cover" - ocupa toda largura, corta excesso vertical
@@ -37,7 +37,7 @@ function draw() {
     // Aplica o filtro atual
     applyFilter(displayWidth, displayHeight, yOffset);
   } else {
-    
+    showGlasses;
     // Modo dividido (metade da tela com corte de excesso)
     let camHeight = height;
     let camWidth = camHeight * camAspect;
@@ -53,17 +53,16 @@ function draw() {
     tint(255);
     //
     if (currentFilter === 1) {
-      offsetY = 25; // vertical
+      offsetY = 15; // vertical
       image(cam, width / 2 + 15, 0, width / 2 , height, max(0, camWidth - width / 2 ), 15, min(camWidth, width / 2), camHeight);
-     
-
+      
+    
 
     } else if (currentFilter === 2) {
       image(cam, width / 2 + offsetX, 0, width / 2 , height, max(0, camWidth - width / 2 ),0, min(camWidth, width / 2), camHeight);
       offsetX = -15; // horizontal
     
     }
-
     /*} else if (currentFilter === 3) {
       image(cam, width / 2 + offsetX, 0, width / 2 - offsetY, height, max(0, camWidth - width / 2 ),0, min(camWidth, width / 2), camHeight);
       offsetX = -15;
