@@ -1,110 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de Scroll</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .menu {
-            width: 200px;
-            height: 300px;
-            overflow-y: scroll;
-            position: relative;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-        }
-
-        .menu::-webkit-scrollbar {
-            display: none;
-        }
-
-
-        .menu-item {
-    display: block;
-    font-size: 24px;
-    padding: 30px 20px; /* aumenta o espaçamento interno */
-    margin-bottom: 10px; /* espaçamento externo entre itens */
-    transition: opacity 0.1s ease-in-out;
-    text-align: center;
-    text-decoration: none; /* remove o sublinhado */
-    color: black; /* garante boa legibilidade */
-}
-.menu-item:hover{
- 
-    text-decoration: none; /* remove o sublinhado */
-    color: rgb(255, 0, 0); /* garante boa legibilidade */
-}
-    </style>
+  <meta charset="UTF-8">
+  <title>Menu Circular com Câmera de Fundo</title>
+  <style>
+    /* Reset simples e sem scroll na página */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    
+    /* Câmera de fundo ocupa toda a tela */
+    #camera {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    /* Painel de menu branco que desliza */
+    #menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 600px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    /* Classe que abre o menu */
+    #menu.open {
+      transform: translateX(0%);
+    }
+    
+    /* Ícone de controlo para abrir/fechar o menu */
+    #menuIcon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    
+    /* Lista de palavras centralizada dentro do menu */
+    #wordList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Cada item da lista */
+    #wordList li {
+      margin: 10px 0;
+      padding: 20px;
+      font-size: 48px;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="menu">
-        <a class="menu-item" href="#">Tritanópia</a>
-        <a class="menu-item" href="#">Protanópia</a>
-        <a class="menu-item" href="#">Deuteranópia</a>
-        <a class="menu-item" href="#">Acromatópsia</a>
-        <a class="menu-item" href="#">Nistagmo</a>
-        <a class="menu-item" href="#">Glaucoma</a>
-        <a class="menu-item" href="#">Hipermetropia</a>
-        <a class="menu-item" href="#">Cataratas</a>
-        <a class="menu-item" href="estrabismo.html">Estrabismo III par</a>
-        <a class="menu-item" href="estrabismo.html">Estrabismo IV par</a>
-        <a class="menu-item" href="estrabismo.html">Estrabismo V par</a>
-   
-    </div>
+  <!-- Vídeo de fundo com stream da câmara -->
+  <video id="camera" autoplay playsinline></video>
 
-    <script>
-        const menu = document.querySelector('.menu');
-    
-        // Seleciona apenas os links, ignorando quebras de linha ou nós de texto
-        const originalItems = Array.from(menu.querySelectorAll('.menu-item'));
-    
-        // Clona os itens para permitir rolagem infinita
-        originalItems.forEach(item => {
-            const clone = item.cloneNode(true);
-            menu.appendChild(clone);
+  <!-- Painel de menu que desliza -->
+  <div id="menu">
+    <ul id="wordList">
+      <li>Tritanopia</li>
+      <li>Protanopia</li>
+      <li>Nistagmo</li>
+      <li>Glaucoma</li>
+      <li>Miopia</li>
+      <li>Estrabismo</li>
+      <li>Acromatopsia</li>
+      <li>Deuteranopia</li>
+    </ul>
+  </div>
+  
+  <!-- Ícone para abrir/fechar o menu -->
+  <div id="menuIcon">&#9776;</div>
+  
+  <script>
+    // 1. Ativar a câmara de fundo
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          document.getElementById('camera').srcObject = stream;
+        })
+        .catch(function(err) {
+          console.error("Erro ao aceder à câmara:", err);
         });
+    }
+
+    // 2. Alternar a exibição do menu ao clicar no ícone
+    document.getElementById('menuIcon').addEventListener('click', function(){
+      document.getElementById('menu').classList.toggle('open');
+    });
     
-        function updateOpacity() {
-            const allItems = Array.from(menu.querySelectorAll('.menu-item'));
+    // 3. Função para atualizar a opacidade dos itens com base na sua distância ao centro
+    function updateOpacities() {
+      const list = document.getElementById('wordList');
+      const centerY = list.clientHeight / 2;
+      
+      // Para cada item da lista, calcula a sua posição central e atualiza a opacidade
+      Array.from(list.children).forEach(li => {
+        // Obtemos as dimensões do item relativamente ao contêiner da lista
+        const rect = li.getBoundingClientRect();
+        const listRect = list.getBoundingClientRect();
+        // Centro vertical do item
+        const itemCenter = rect.top + rect.height / 2 - listRect.top;
+        const distance = Math.abs(centerY - itemCenter);
+        // Regula a opacidade: se o item estiver no centro = opacidade 1, caso contrário diminui (valor mínimo de 0.2)
+        const opacity = Math.max(0.2, 1 - distance / (centerY));
+        li.style.opacity = opacity;
+      });
+    }
     
-            allItems.forEach((item) => {
-                const itemRect = item.getBoundingClientRect();
-                const menuRect = menu.getBoundingClientRect();
-                const itemCenter = itemRect.top + itemRect.height / 2;
-                const menuCenter = menuRect.top + menuRect.height / 2;
-                const distance = Math.abs(menuCenter - itemCenter);
-                const maxDistance = menuRect.height / 2;
-                const opacity = Math.max(0.3, 1 - distance / maxDistance);
-                item.style.opacity = opacity;
-            });
-        }
+    // Atualiza a opacidade inicialmente
+    updateOpacities();
     
-        // Evento de scroll controlado pelo utilizador
-        menu.addEventListener('scroll', () => {
-            // Volta ao início se chegar ao meio da rolagem (efeito infinito)
-            if (menu.scrollTop >= menu.scrollHeight / 2) {
-                menu.scrollTop = 1; // pequeno valor para evitar salto visual
-            }
-            updateOpacity();
-        });
+    // 4. Lidar com o scroll para criar a rotação infinita da lista
+    const menu = document.getElementById('menu');
+    const wordList = document.getElementById('wordList');
+
+    menu.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        // Se o scroll for para baixo, move o primeiro item para o final
+        const firstItem = wordList.firstElementChild;
+        wordList.appendChild(firstItem);
+      } else if (e.deltaY < 0) {
+        // Se o scroll for para cima, move o último item para o início
+        const lastItem = wordList.lastElementChild;
+        wordList.insertBefore(lastItem, wordList.firstElementChild);
+      }
+      // Atualiza as opacidades após a rotação
+      updateOpacities();
+    });
     
-        // Inicializa a opacidade corretamente ao carregar
-        updateOpacity();
-    </script>
-    
+    // Opcional: para garantir que as opacidades se ajustem se a janela for redimensionada
+    window.addEventListener('resize', updateOpacities);
+  </script>
 </body>
-
 </html>
