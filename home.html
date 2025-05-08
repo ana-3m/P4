@@ -4,9 +4,48 @@
 
   <meta charset="UTF-8">
   <title>Menu Circular com Câmera de Fundo</title>
-  <style>
-    /* Reset simples e sem scroll na página */
-    html, body {
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Scroll</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+
+    <style>
+      
+        .menu::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .menu-item {
+    display: block;
+    font-size: 24px;
+    padding: 30px 20px; /* aumenta o espaçamento interno */
+    margin-bottom: 10px; /* espaçamento externo entre itens */
+    transition: opacity 0.1s ease-in-out;
+    text-align: center;
+    text-decoration: none; /* remove o sublinhado */
+    color: black; /* garante boa legibilidade */
+}
+#wordList li {
+  margin: 10px 0;
+  padding: 20px;
+  font-size: 48px;
+  transition: opacity 0.3s;
+  pointer-events: none; /* bloqueia clique por padrão */
+}
+
+#wordList li.nistagmo {
+  pointer-events: auto; /* permite clique apenas no Nistagmo */
+  cursor: pointer;
+}
+#wordList li.estrabismo {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+  /* Reset simples e sem scroll na página */
+  html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -85,59 +124,6 @@
       transition: opacity 0.3s;
       pointer-events: none;
     }
-  </style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de Scroll</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .menu {
-            width: 200px;
-            height: 300px;
-            overflow-y: scroll;
-            position: relative;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-        }
-
-        .menu::-webkit-scrollbar {
-            display: none;
-        }
-
-
-        .menu-item {
-    display: block;
-    font-size: 24px;
-    padding: 30px 20px; /* aumenta o espaçamento interno */
-    margin-bottom: 10px; /* espaçamento externo entre itens */
-    transition: opacity 0.1s ease-in-out;
-    text-align: center;
-    text-decoration: none; /* remove o sublinhado */
-    color: black; /* garante boa legibilidade */
-}
-#wordList li {
-  margin: 10px 0;
-  padding: 20px;
-  font-size: 48px;
-  transition: opacity 0.3s;
-  pointer-events: none; /* bloqueia clique por padrão */
-}
-
-#wordList li.nistagmo {
-  pointer-events: auto; /* permite clique apenas no Nistagmo */
-  cursor: pointer;
-}
 
     </style>
 
@@ -154,7 +140,14 @@
       <li class="nistagmo" >Nistagmo</li>   <!-- Ativar filtro abanar -->
       <li>Glaucoma</li>
       <li>Miopia</li>
-      <li>Estrabismo</li>
+      <li class="estrabismoVertical">Estrabismo III par</li> <!-- Ativar filtro estrabismo currentF 1 -->
+      <li class="estrabismoHorizontal">Estrabismo IV par</li> <!-- Ativar filtro estrabismo currentF 2  -->
+      <li class="estrabismoDiagonal">Estrabismo VI par</li> <!-- Ativar filtro estrabismo currentF 3 -->
+
+      <!-- <li class="estrabismo" data-filter="1">Estrabismo III par</li>
+<li class="estrabismo" data-filter="2">Estrabismo IV par</li> Ativar filtro estrabismo currentF 2  
+<li class="estrabismo" data-filter="3">Estrabismo VI par</li>  -->
+    
       <li>Acromatopsia</li>
       <li>Deuteranopia</li>
     </ul>
@@ -237,6 +230,7 @@
 
     
 <script src="nistagmo.js"></script>
+<script src="estrabismo2.js"></script>
 
 </body>
 </html>

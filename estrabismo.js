@@ -1,7 +1,7 @@
+//estrabismo.js
 
 let cam;
 let camAspect;
-
 let currentFilter = 1; // 1: vertical, 2: horizontal, 3: diagonal
 
 
@@ -13,8 +13,8 @@ function setup() {
     cam = createCapture(VIDEO, () => {
       camAspect = cam.width / cam.height;
     });
-    cam.hide();
-  
+    cam.hide(); 
+    
     // Adiciona listeners para os botões do menu
     const verticalBtn = document.getElementById("estrabismoVertical");
     const horizontalBtn = document.getElementById("estrabismoHorizontal");
@@ -76,4 +76,14 @@ function applyFilter(displayWidth, displayHeight, yOffset) {
     image(cam,15, yOffset + 15, displayWidth, displayHeight);
   }
   noTint();
+}
+
+function keyPressed() {
+  if (key === '1') {
+    currentFilter = 1; // Filtro vertical
+  } else if (key === '2') {
+    currentFilter = 2; // Filtro horizontal
+  } else if (key === '3') {
+    currentFilter = 3; // Filtro diagonal
+  }
 }

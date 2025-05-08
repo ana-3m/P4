@@ -11,14 +11,17 @@ const camera = document.getElementById("camera");
 camera.style.left = "0";
 camera.style.transform = "translateX(0px)";
 
+
+const nistagmoItem = document.querySelector("#wordList li.nistagmo");
+
 function ativarNistagmo() {
   if (nistagmoAtivo) return;
   nistagmoAtivo = true;
+  nistagmoItem.classList.add("ativo");
 
   intervaloNistagmo = setInterval(() => {
-    // Alterna entre -1px e 1px
     deslocamento = direcao;
-    camera.style.transform = `translateX(${deslocamento}px) scaleX(${(window.innerWidth + 5) / window.innerWidth})`;
+    camera.style.transform = `translateX(${deslocamento}px) scaleX(${(window.innerWidth + 2) / window.innerWidth})`;
     direcao *= -1;
   }, velocidade);
 }
@@ -27,6 +30,7 @@ function desativarNistagmo() {
   clearInterval(intervaloNistagmo);
   camera.style.transform = "translateX(0px) scaleX(1)";
   nistagmoAtivo = false;
+  nistagmoItem.classList.remove("ativo");
 }
 
 // Escuta o clique no item "Nistagmo"
