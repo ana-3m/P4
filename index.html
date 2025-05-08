@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +16,8 @@
         }
 
         .menu {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 300px;
             overflow-y: scroll;
             position: relative;
             background: white;
@@ -25,32 +26,50 @@
             padding: 10px;
         }
 
+        .menu::-webkit-scrollbar {
+            display: none;
+        }
+
+
         .menu-item {
-            font-size: 48px;
+            font-size: 24px;
             padding: 20px;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.1s ease-in-out;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
     <div class="menu">
-       <div class="menu-item">Tritanópia</div> 
-        <div class="menu-item">Protanopia</div>
+        <div class="menu-item">Tritanópia</div>
+        <div class="menu-item">Protanópia</div>
+        <div class="menu-item">Deuteranópia</div>
+        <div class="menu-item">Acromatópsia</div>
         <div class="menu-item">Nistagmo</div>
         <div class="menu-item">Glaucoma</div>
         <div class="menu-item">Hipermetropia</div>
+        <div class="menu-item">Miopia</div>
         <div class="menu-item">Cataratas</div>
-        <div class="menu-item">Deuteranópia</div>
-     
-        
+        <div class="menu-item">Estrabismo</div>
     </div>
 
     <script>
         const menu = document.querySelector('.menu');
-        const items = document.querySelectorAll('.menu-item');
+        const items = Array.from(menu.children);
+
+        // Duplica os itens para criar continuidade
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            menu.appendChild(clone);
+        });
 
         menu.addEventListener('scroll', () => {
+            if (menu.scrollTop >= menu.scrollHeight / 2) {
+                menu.scrollTop = 0; // Voltar ao início sem interrupções perceptíveis
+            }
+
+            // Aplica animação de opacidade
             items.forEach((item) => {
                 const itemRect = item.getBoundingClientRect();
                 const menuRect = menu.getBoundingClientRect();
@@ -64,4 +83,5 @@
         });
     </script>
 </body>
+
 </html>
