@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Câmara com Menu e Botão Animado</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    /* Estilo para o vídeo da câmara de fundo */
+    #camera {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* Menu que desliza a partir da parte inferior */
+    #menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background:#ebebeb;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #menu.open {
+      transform: translateY(0);
+    }
+
+    /* Botão que abre/fecha o menu */
+    #open {
+      position: fixed;
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease-in-out;
+    }
+    /* Quando o menu está aberto, o botão move-se para cima e gira 180º */
+    #open.open {
+      transform: translateX(-50%) translateY(-150px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Vídeo de fundo com stream da câmara -->
+  <video id="camera" autoplay playsinline></video>
+
+  <!-- Menu escondido inicialmente -->
+  <div id="menu">
+    <p>Conteúdo do menu</p>
+  </div>
+
+  <!-- Botão de abertura -->
+  <div id="open">
+    <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
+  </div>
+
+  <script src="teste.js"></script>
+</body>
+</html>
