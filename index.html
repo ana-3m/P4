@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
 
   <meta charset="UTF-8">
-  <title>Menu Circular com Câmera de Fundo</title>
+  <title>Menu Circular com Câmara de Fundo</title>
   <style>
-    /* Reset simples e sem scroll na página */
-    html, body {
+    /* Reset e configuração da página */
+    html,
+    body {
       margin: 0;
       padding: 0;
       overflow: hidden;
       font-family: sans-serif;
     }
-    
-    /* Câmera de fundo ocupa toda a tela */
+
+    /* Vídeo de fundo (stream da câmara) */
     #camera {
       position: fixed;
       top: 0;
@@ -23,7 +25,7 @@
       object-fit: cover;
       z-index: -1;
     }
-    
+
     /* Painel de menu branco que desliza */
     #menu {
       position: fixed;
@@ -39,13 +41,12 @@
       align-items: center;
       overflow: hidden;
     }
-    
-    /* Classe que abre o menu */
+
     #menu.open {
       transform: translateX(0%);
     }
-    
-    /* Ícone de controlo para abrir/fechar o menu */
+
+    /* Ícone para abrir/fechar o menu */
     #menuIcon {
       position: fixed;
       top: 20px;
@@ -60,30 +61,27 @@
       align-items: center;
       justify-content: center;
       z-index: 10;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
-    
-    /* Lista de palavras centralizada dentro do menu */
+
+    /* Lista de palavras – posicionada de forma relativa para permitir posicionamento absoluto dos itens */
     #wordList {
-      list-style: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
       padding: 0;
       margin: 0;
-      position: relative;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      list-style: none;
     }
-    
-    /* Cada item da lista */
+
+    /* Cada item é posicionado absolutamente */
     #wordList li {
-      margin: 10px 0;
-      padding: 20px;
+      position: absolute;
+      left: 50px;
+      white-space: nowrap;
       font-size: 48px;
-      transition: opacity 0.3s;
-      pointer-events: none;
+      padding: 24px;
+      transition: opacity 0.3s, transform 0.3s;
     }
   </style>
 
@@ -130,11 +128,12 @@
     </style>
 
 </head>
+
 <body>
-  <!-- Vídeo de fundo com stream da câmara -->
+  <!-- Vídeo de fundo -->
   <video id="camera" autoplay playsinline></video>
 
-  <!-- Painel de menu que desliza -->
+  <!-- Menu com forma circular -->
   <div id="menu">
     <ul id="wordList">
       <li>Tritanopia</li>
@@ -147,84 +146,96 @@
       <li>Deuteranopia</li>
     </ul>
   </div>
-  
+
   <!-- Ícone para abrir/fechar o menu -->
   <div id="menuIcon">&#9776;</div>
-  
+
   <script>
     // 1. Ativar a câmara de fundo
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
+        .then(function (stream) {
           document.getElementById('camera').srcObject = stream;
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.error("Erro ao aceder à câmara:", err);
         });
     }
 
-    // 2. Alternar a exibição do menu ao clicar no ícone
-    document.getElementById('menuIcon').addEventListener('click', function(){
-      document.getElementById('menu').classList.toggle('open');
-    });
-    
-    // 3. Função para atualizar a opacidade dos itens com base na sua distância ao centro
-    function updateOpacities() {
-      const list = document.getElementById('wordList');
-      const centerY = list.clientHeight / 2;
-      
-      // Para cada item da lista, calcula a sua posição central e atualiza a opacidade
-      Array.from(list.children).forEach(li => {
-        // Obtemos as dimensões do item relativamente ao contêiner da lista
-        const rect = li.getBoundingClientRect();
-        const listRect = list.getBoundingClientRect();
-        // Centro vertical do item
-        const itemCenter = rect.top + rect.height / 2 - listRect.top;
-        const distance = Math.abs(centerY - itemCenter);
-        // Regula a opacidade: se o item estiver no centro = opacidade 1, caso contrário diminui (valor mínimo de 0.2)
-        const opacity = Math.max(0.2, 1 - distance / (centerY));
-        li.style.opacity = opacity;
+    /*
+      2. Configurações para o menu circular:
+         - Usamos uma variável global "baseAngle" (em graus) para controlar a rotação inicial.
+         - Distribuímos os itens igualmente ao longo dos 360°.
+         - O scroll (evento wheel) incrementa ou decrementa "baseAngle", fazendo com que os itens girem.
+         - Calculamos a posição (x, y) de cada item com base na fórmula:
+               x = centerX + radius * cos(angle)
+               y = centerY + radius * sin(angle)
+         - A opacidade é ajustada conforme a diferença (em graus) entre o ângulo do item e o ângulo alvo (aqui, 90° – posição inferior).
+    */
+    let baseAngle = 0; // em graus
+    const wordList = document.getElementById('wordList');
+    const items = wordList.querySelectorAll('li');
+    const totalItems = items.length;
+
+    // Obtemos dimensões básicas do menu circular
+    const menu = document.getElementById('menu');
+    const menuWidth = menu.clientWidth;
+    const menuHeight = menu.clientHeight;
+    const centerX = menuWidth;
+    const centerY = menuHeight / 2;
+    const radius = centerX - 300; // margem para que o texto não fique colado na borda
+
+    // Ângulo alvo para opacidade máxima (ex: 90° = parte de baixo do círculo)
+    const targetAngle = 90;
+
+    function updateItems() {
+      const angleStep = 360 / totalItems;
+      items.forEach((item, index) => {
+        // Calcula o ângulo deste item somando o offset global (baseAngle)
+        let itemAngle = (baseAngle + index * angleStep) % 360;
+        if (itemAngle < 0) itemAngle += 360;
+        // Converter para radianos
+        const rad = itemAngle * Math.PI / 180;
+        // Posição x e y (centralizando o item)
+        const x = centerX + radius * Math.cos(rad) - item.offsetWidth / 2;
+        const y = centerY + radius * Math.sin(rad) - item.offsetHeight / 2;
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+
+        // Cálculo da opacidade: quanto menor a diferença entre itemAngle e targetAngle, mais alta a opacidade
+        let diff = Math.abs(itemAngle - targetAngle);
+        if (diff > 180) diff = 360 - diff; // pega no menor ângulo
+        // Opacidade: 1 para diff = 0 e 0.2 para diff >= 90
+        const opacity = Math.max(0.2, 1 - (diff / 90) * 0.8);
+        item.style.opacity = opacity;
       });
     }
-    
-    // Atualiza a opacidade inicialmente
-    updateOpacities();
-    
 
-    // 4. Lidar com o scroll para criar a rotação infinita da lista
-    const menu = document.getElementById('menu');
-    const wordList = document.getElementById('wordList');
+    // Atualiza as posições e opacidades inicialmente
+    updateItems();
 
+    // 3. Evento de scroll para rotação infinita.
     menu.addEventListener('wheel', (e) => {
       e.preventDefault();
-      if (e.deltaY > 0) {
-        // Se o scroll for para baixo, move o primeiro item para o final
-        const firstItem = wordList.firstElementChild;
-        wordList.appendChild(firstItem);
-      } else if (e.deltaY < 0) {
-        // Se o scroll for para cima, move o último item para o início
-        const lastItem = wordList.lastElementChild;
-        wordList.insertBefore(lastItem, wordList.firstElementChild);
-      }
-      // Atualiza as opacidades após a rotação
-      updateOpacities();
+      // Ajusta o baseAngle de acordo com a direção do scroll (o fator 0.1 define a sensibilidade)
+      baseAngle += e.deltaY * 0.1;
+      updateItems();
     });
 
-        // Evento de scroll controlado pelo utilizador
-        menu.addEventListener('scroll', () => {
-            // Volta ao início se chegar ao meio da rolagem (efeito infinito)
-            if (menu.scrollTop >= menu.scrollHeight / 2) {
-                menu.scrollTop = 1; // pequeno valor para evitar salto visual
-            }
-            updateOpacity();
-        });
-    
-        // Inicializa a opacidade corretamente ao carregar
-        updateOpacity();
-    </script>
+    // 4. Alternar a visibilidade do menu ao clicar no ícone
+    document.getElementById('menuIcon').addEventListener('click', function () {
+      menu.classList.toggle('open');
+    });
 
+<<<<<<< HEAD
  
 
 
+=======
+    // Opcional: atualizar posições se a janela for redimensionada (para garantir o posicionamento correto)
+    window.addEventListener('resize', updateItems);
+  </script>
+>>>>>>> 7f308a0b0305f31cd84af6bdb4a1ef6d603308b2
 </body>
+
 </html>
