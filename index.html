@@ -2,6 +2,7 @@
 <html lang="pt">
 
 <head>
+
   <meta charset="UTF-8">
   <title>Menu Circular com Câmara de Fundo</title>
   <style>
@@ -83,6 +84,49 @@
       transition: opacity 0.3s, transform 0.3s;
     }
   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Scroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            width: 200px;
+            height: 300px;
+            overflow-y: scroll;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .menu::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .menu-item {
+    display: block;
+    font-size: 24px;
+    padding: 30px 20px; /* aumenta o espaçamento interno */
+    margin-bottom: 10px; /* espaçamento externo entre itens */
+    transition: opacity 0.1s ease-in-out;
+    text-align: center;
+    text-decoration: none; /* remove o sublinhado */
+    color: black; /* garante boa legibilidade */
+}
+
+    </style>
+
 </head>
 
 <body>
