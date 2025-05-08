@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Scroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+        
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            left: 0%; 
+            top:0; 
+
+            width: 600px;
+            height: 700px;
+            overflow-y: scroll;
+            position: relative;
+            background: rgb(50, 50, 50);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(246, 246, 246, 0.1);
+            padding: 10px;
+
+        }
+
+        .menu::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .menu-item {
+    display: block;
+    font-size: 45px;
+    padding: 30px 20px; /* aumenta o espaçamento interno */
+    margin-bottom: 10px; /* espaçamento externo entre itens */
+    transition: opacity 0.1s ease-in-out;
+    text-align: center;
+    text-decoration: none; /* remove o sublinhado */
+    color: rgb(255, 255, 255); /* garante boa legibilidade */
+}
+#logo{
+    position:sticky; 
+    left: 2%; 
+            top:2%; 
+
+            width: 12%;
+            height: auto;
+}
+
+    </style>
+</head>
+
+<body>
+    
+<img class="cam"> 
+
+
+<!--popup -->
+    <div class="menu">
+        <img src="imagem/Vector.svg" alt="Imagem SVG" id="logo" width="200" height="200">
+
+        <div class="menu-item">Tritanópia</div> <!--ativar filtro daltonismo trianoia  -->
+        <div class="menu-item" >Protanópia</div> <!--ativar filtro  daltonismo Protanópia-->
+        <div class="menu-item" >Deuteranópia</div>
+        <div class="menu-item">Acromatópsia</div>
+        <div class="menu-item" >Nistagmo</div>
+        <div class="menu-item">Glaucoma</div>
+        <div class="menu-item">Hipermetropia</div>
+        <div class="menu-item" >Cataratas</div>
+        <div class="menu-item" >Estrabismo III par</div>  <!-- ativar filtro estrabismo deslocamento vertical  -->
+        <div class="menu-item" >Estrabismo IV par</div> <!-- ativar filtro estrabismo deslocamento horizontal  -->
+        <div class="menu-item" >Estrabismo V par</div> <!-- ativar filtro estrabismo deslocamento diagonal  -->
+   
+    </div>
+
+    <script>
+        const menu = document.querySelector('.menu');
+    
+        // Seleciona apenas os links, ignorando quebras de linha ou nós de texto
+        const originalItems = Array.from(menu.querySelectorAll('.menu-item'));
+    
+        // Clona os itens para permitir rolagem infinita
+        originalItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            menu.appendChild(clone);
+        });
+    
+        function updateOpacity() {
+            const allItems = Array.from(menu.querySelectorAll('.menu-item'));
+    
+            allItems.forEach((item) => {
+                const itemRect = item.getBoundingClientRect();
+                const menuRect = menu.getBoundingClientRect();
+                const itemCenter = itemRect.top + itemRect.height / 2;
+                const menuCenter = menuRect.top + menuRect.height / 2;
+                const distance = Math.abs(menuCenter - itemCenter);
+                const maxDistance = menuRect.height / 2;
+                const opacity = Math.max(0.3, 1 - distance / maxDistance);
+                item.style.opacity = opacity;
+            });
+        }
+    
+        // Evento de scroll controlado pelo utilizador
+        menu.addEventListener('scroll', () => {
+            // Volta ao início se chegar ao meio da rolagem (efeito infinito)
+            if (menu.scrollTop >= menu.scrollHeight / 2) {
+                menu.scrollTop = 1; // pequeno valor para evitar salto visual
+            }
+            updateOpacity();
+        });
+    
+        // Inicializa a opacidade corretamente ao carregar
+        updateOpacity();
+    </script>
+    
+    <script src="estrabismo.js"></script>
+        
+    <script src="filtros_daltonismo/filtros.js"></script>
+</body>
+
+</html>
