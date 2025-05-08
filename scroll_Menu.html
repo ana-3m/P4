@@ -2,128 +2,134 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Scroll Menu</title>
+  <title>Lista tipo Roda 2D</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: #e0e0e0;
+      overflow: hidden;
       font-family: sans-serif;
-      overflow: hidden; 
+      background: #ddd;
     }
 
-    .scroll-wrapper {
+    .wrapper {
+      display: flex;
       height: 100vh;
+    }
+
+    .menu {
+      width: 40%;
+      background: #e0e0e0;
       overflow-y: scroll;
       scroll-behavior: smooth;
+      position: relative;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 50%;
+    .menu::-webkit-scrollbar {
+      display: none;
     }
 
     .word {
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      transition: all 0.3s ease;
-      margin: 10% 0;
+      font-size: 2.5rem;
+      position: relative;
+      margin: 20% 0;
       color: rgba(0, 0, 0, 0.3);
+      transform-origin: left center;
+      transition: transform 0.2s ease, color 0.2s ease, left 0.2s ease;
+      left: 0;
     }
 
-    .scroll-wrapper::-webkit-scrollbar {
-      display: none;
+    .content {
+      flex-grow: 1;
+      background: url('https://images.unsplash.com/photo-1501183638710-841dd1904471') center center/cover no-repeat;
     }
-  
   </style>
 </head>
 <body>
 
-  <div class="scroll-wrapper" id="scrollWrapper">
-    <div class="container" id="container">
-      <!-- palavras / futuros botoes -->
-      <div class="word">Tritanopia</div>
-      <div class="word">Protanopia</div>
-      <div class="word">Nistagmo</div>
-      <div class="word">Glaucoma</div>
-      <div class="word">Daltonismo</div>
-      <div class="word">Miopia</div>
-      <div class="word">Astigmatismo</div>
-      <div class="word">Catarata</div>
-      <div class="word">Presbiopia</div>
-      <div class="word">Ambliopia</div>
-      <div class="word">Hipermetropia</div>
-      <div class="word">Fotofobia</div>
-      <div class="word">Retinose Pigmentar</div>
-      <div class="word">Degeneração Macular</div>
-      <div class="word">Diplopia</div>
-      <div class="word">Estrabismo</div>
-      <div class="word">Cegueira Noturna</div>
-      <div class="word">Edema Macular</div>
-      <div class="word">Retinopatia Diabética</div>
-      <div class="word">Neurite Óptica</div>
-    </div>
+<div class="wrapper">
+  <div class="menu" id="menu">
+    <div class="word">Tritanopia</div>
+    <div class="word">Protanopia</div>
+    <div class="word">Nistagmo</div>
+    <div class="word">Glaucoma</div>
+    <div class="word">Daltonismo</div>
+    <div class="word">Miopia</div>
+    <div class="word">Astigmatismo</div>
+    <div class="word">Catarata</div>
+    <div class="word">Presbiopia</div>
+    <div class="word">Ambliopia</div>
+    <div class="word">Hipermetropia</div>
+    <div class="word">Fotofobia</div>
+    <div class="word">Retinose Pigmentar</div>
+    <div class="word">Degeneração Macular</div>
+    <div class="word">Diplopia</div>
+    <div class="word">Estrabismo</div>
+    <div class="word">Cegueira Noturna</div>
+    <div class="word">Edema Macular</div>
+    <div class="word">Retinopatia Diabética</div>
+    <div class="word">Neurite Óptica</div>
   </div>
+  <div class="content"></div>
+</div>
 
-  <script>
-    const scrollWrapper = document.getElementById('scrollWrapper');
-    const container = document.getElementById('container');
-    const originalWords = Array.from(container.children);
+<script>
+  const menu = document.getElementById('menu');
+  const originalWords = Array.from(menu.children);
 
-    // Duplica várias vezes para criar conteúdo infinito
-    for (let i = 0; i < 10; i++) {
-      originalWords.forEach(word => {
-        container.appendChild(word.cloneNode(true));
-      });
-    }
-
-    function updateHighlight() {
-      const words = container.querySelectorAll('.word');
-      const centerY = scrollWrapper.clientHeight / 2;
-      const wrapperRect = scrollWrapper.getBoundingClientRect();
-
-      words.forEach(word => {
-        const rect = word.getBoundingClientRect();
-        const wordCenter = rect.top + rect.height / 2 - wrapperRect.top;
-        const distance = Math.abs(centerY - wordCenter);
-        const maxDistance = scrollWrapper.clientHeight / 2;
-        const factor = Math.min(distance / maxDistance, 1);
-        const opacity = 1 - factor * 0.7;
-        const scale = 1 + (1 - factor) * 0.3;
-        word.style.color = `rgba(0,0,0,${opacity})`;
-        word.style.transform = `scale(${scale})`;
-      });
-    }
-
-    function maintainInfiniteScroll() {
-      const scrollTop = scrollWrapper.scrollTop;
-      const scrollHeight = scrollWrapper.scrollHeight;
-      const clientHeight = scrollWrapper.clientHeight;
-      const buffer = 200;
-
-      if (scrollTop < buffer) {
-        scrollWrapper.scrollTop = scrollHeight / 2;
-      } else if (scrollTop + clientHeight > scrollHeight - buffer) {
-        scrollWrapper.scrollTop = scrollHeight / 2;
-      }
-    }
-
-    scrollWrapper.addEventListener('scroll', () => {
-      updateHighlight();
-      maintainInfiniteScroll();
+  for (let i = 0; i < 10; i++) {
+    originalWords.forEach(word => {
+      menu.appendChild(word.cloneNode(true));
     });
+  }
 
-    window.addEventListener('load', () => {
-      scrollWrapper.scrollTop = scrollWrapper.scrollHeight / 2;
-      updateHighlight();
+  function updateVisuals() {
+    const words = menu.querySelectorAll('.word');
+    const centerY = menu.clientHeight / 2;
+    const menuRect = menu.getBoundingClientRect();
+
+    words.forEach(word => {
+      const rect = word.getBoundingClientRect();
+      const wordCenterY = rect.top + rect.height / 2 - menuRect.top;
+      const distanceY = Math.abs(centerY - wordCenterY);
+      const maxDistance = centerY;
+      const factor = Math.min(distanceY / maxDistance, 1);
+
+      const offsetX = (1 - factor) * 85; // avanço horizontal
+      const opacity = 1 - factor * 0.7;
+      const scale = 1 + (1 - factor) * 0.3;
+
+      word.style.left = `${offsetX}px`;
+      word.style.color = `rgba(0, 0, 0, ${opacity})`;
+      word.style.transform = `scale(${scale})`;
     });
-  </script>
+  }
+
+  function maintainInfiniteScroll() {
+    const scrollTop = menu.scrollTop;
+    const scrollHeight = menu.scrollHeight;
+    const clientHeight = menu.clientHeight;
+    const buffer = 200;
+
+    if (scrollTop < buffer) {
+      menu.scrollTop = scrollHeight / 2;
+    } else if (scrollTop + clientHeight > scrollHeight - buffer) {
+      menu.scrollTop = scrollHeight / 2;
+    }
+  }
+
+  menu.addEventListener('scroll', () => {
+    updateVisuals();
+    maintainInfiniteScroll();
+  });
+
+  window.addEventListener('load', () => {
+    menu.scrollTop = menu.scrollHeight / 2;
+    updateVisuals();
+  });
+</script>
+
 
 </body>
 </html>
