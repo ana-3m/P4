@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu de Scroll</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+
 
     <style>
       
@@ -27,7 +27,22 @@
     text-decoration: none; /* remove o sublinhado */
     color: black; /* garante boa legibilidade */
 }
-#wordList li {
+/* Lista de palavras centralizada dentro do menu */
+#wordList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+ #wordList li {
   margin: 10px 0;
   padding: 20px;
   font-size: 48px;
@@ -101,30 +116,6 @@
       z-index: 10;
     }
     
-    /* Lista de palavras centralizada dentro do menu */
-    #wordList {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      position: relative;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    /* Cada item da lista */
-    #wordList li {
-      margin: 10px 0;
-      padding: 20px;
-      font-size: 48px;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
     </style>
 
 </head>
@@ -225,7 +216,7 @@
         });
     
         // Inicializa a opacidade corretamente ao carregar
-        updateOpacity();
+        //updateOpacity();
     </script>
 
     
