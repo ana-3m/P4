@@ -78,6 +78,43 @@ function applyFilter(displayWidth, displayHeight, yOffset) {
   noTint();
 }
 
+
+function applyFilterV(displayWidth, displayHeight, yOffset) {
+// Imagem normal
+image(cam, 0, yOffset, displayWidth, displayHeight);
+  
+// Imagem com deslocamento baseado no filtro atual
+tint(255, 100);
+  // Filtro 1: Deslocamento vertical
+  image(cam, 0, yOffset -30 , displayWidth, displayHeight);
+
+}
+
+function applyFilterH(displayWidth, displayHeight, yOffset) {
+  // Imagem normal
+  image(cam, 0, yOffset, displayWidth, displayHeight);
+    
+  // Imagem com deslocamento baseado no filtro atual
+  tint(255, 100);
+    // Filtro 2: Deslocamento horizontal
+    image(cam,15, yOffset + 15, displayWidth, displayHeight);
+  
+  }
+
+
+  function applyFilterD(displayWidth, displayHeight, yOffset) {
+    // Imagem normal
+    image(cam, 0, yOffset, displayWidth, displayHeight);
+      
+    // Imagem com deslocamento baseado no filtro atual
+    tint(255, 100);
+      // Filtro 3: Deslocamento diagonal
+      image(cam, 0, yOffset -30 , displayWidth, displayHeight);
+    
+    }
+
+
+
 function keyPressed() {
   if (key === '1') {
     currentFilter = 1; // Filtro vertical

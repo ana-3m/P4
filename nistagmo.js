@@ -41,8 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
       item.addEventListener("click", () => {
         if (nistagmoAtivo) {
           desativarNistagmo();
+               console.log("ativado nistagmo");
         } else {
           ativarNistagmo();
+          console.log("ativado nistagmo");
         }
       });
     }
