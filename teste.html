@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Câmara com Menu e Botão Animado</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -40,7 +41,8 @@
   margin: 0;
   list-style: none;
   scroll-behavior: smooth;
-}
+
+  }
 
 #menu::-webkit-scrollbar {
   height: 5px;
@@ -55,14 +57,23 @@
 
 /* Itens do menu */
 .word {
-  font-size: 1.5rem;
+  font-size: 3rem;
   margin: 0 20px;
   flex: 0 0 auto;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 50px 20px;
   cursor: pointer;
   user-select: none;
+   
   transition: transform 0.2s ease, color 0.2s ease;
+ 
+
+}
+
+.word.ativo {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    transform: scale(1.05);
 }
 
 /* Botão que abre/fecha o menu */
@@ -81,14 +92,23 @@
   transition: transform 0.3s ease-in-out;
 }
 
+
 #open.open {
   transform: translateX(-50%) translateY(-150px);
+
 }
 
 #menu li#nistagmo {
   pointer-events: auto; /* permite clique apenas no Nistagmo */
   cursor: pointer;
+ 
 }
+#menu li#estrabismoVertical {
+  pointer-events: auto; /* permite clique */
+  cursor: pointer;
+ 
+}
+
 
   </style>
 </head>
@@ -98,15 +118,19 @@
 
   <!-- Menu escondido inicialmente -->
 <ul id="menu">
-  <li class="word">Tritanopia</li>
-  <li class="word">Protanopia</li>
-  <li class="word">Deuteranopia</li>
-  <li class="word">Acromatopsia</li>
-  <li class="word">Estrabismo</li>
-  <li class="word" id="nistagmo">Nistagmo</li>
+ 
+  <li class="word">Tritanopia</li> <!-- daltonismo1 -->
+  <li class="word">Protanopia</li> <!--daltonismo2-->
+  <li class="word">Deuteranopia</li> <!--daltonismo3 -->
+  <li class="word">Acromatopsia</li> <!--daltonismo4 -->
+  <li class="word"id="estrabismoVertical">Estrabismo III par</li> <!--duplica-->
+  <li class="word"id="estrabismoHorizontal">Estrabismo IV par</li>
+  <li class="word"id="estrabismoDiagonal">Estrabismo VI par</li>
+
+  <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
   <li class="word">Escotomas</li>
   <li class="word">Glaucoma</li>
-  <li class="word">Daltonismo</li>
+ 
   <li class="word">Baixa Visão</li>
   <li class="word">Astigmatismo</li>
 </ul> 
@@ -117,5 +141,6 @@
 
   <script src="teste.js"></script>
     <script src="nistagmo.js"></script>
+    <script src="estrabismo2.js"></script>
 </body>
 </html>
