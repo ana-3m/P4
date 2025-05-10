@@ -7,6 +7,11 @@
  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!--chamar p5-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
+
     <title>Menu de Scroll</title>
 
 
@@ -17,16 +22,7 @@
         }
 
 
-        .menu-item {
-    display: block;
-    font-size: 24px;
-    padding: 30px 20px; /* aumenta o espaçamento interno */
-    margin-bottom: 10px; /* espaçamento externo entre itens */
-    transition: opacity 0.1s ease-in-out;
-    text-align: center;
-    text-decoration: none; /* remove o sublinhado */
-    color: black; /* garante boa legibilidade */
-}
+       
 /* Lista de palavras centralizada dentro do menu */
 #wordList {
       list-style: none;
@@ -50,7 +46,7 @@
   pointer-events: none; /* bloqueia clique por padrão */
 }
 
-#wordList li.nistagmo {
+#wordList li#nistagmo {
   pointer-events: auto; /* permite clique apenas no Nistagmo */
   cursor: pointer;
 }
@@ -128,12 +124,12 @@
     <ul id="wordList">
       <li >Tritanopia</li>
       <li>Protanopia</li>
-      <li class="nistagmo" >Nistagmo</li>   <!-- Ativar filtro abanar -->
+      <li id="nistagmo" >Nistagmo</li>   <!-- Ativar filtro abanar -->
       <li>Glaucoma</li>
       <li>Miopia</li>
-      <li class="estrabismoVertical">Estrabismo III par</li> <!-- Ativar filtro estrabismo currentF 1 -->
-      <li class="estrabismoHorizontal">Estrabismo IV par</li> <!-- Ativar filtro estrabismo currentF 2  -->
-      <li  class="estrabismoDiagonal">Estrabismo VI par</li> <!-- Ativar filtro estrabismo currentF 3 -->
+      <li class="estrabismo" id="estrabismoVertical">Estrabismo III par</li> <!-- Ativar filtro estrabismo currentF 1 -->
+      <li class="estrabismo" id="estrabismoHorizontal">Estrabismo IV par</li> <!-- Ativar filtro estrabismo currentF 2  -->
+      <li class="estrabismo" id="estrabismoDiagonal">Estrabismo VI par</li> <!-- Ativar filtro estrabismo currentF 3 -->
 
       <!-- <li class="estrabismo" data-filter="1">Estrabismo III par</li>
 <li class="estrabismo" data-filter="2">Estrabismo IV par</li> Ativar filtro estrabismo currentF 2  

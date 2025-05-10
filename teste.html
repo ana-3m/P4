@@ -19,50 +19,76 @@
       object-fit: cover;
     }
 
-    /* Menu que desliza a partir da parte inferior */
-    #menu {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background:#ebebeb;
-      transform: translateY(100%);
-      transition: transform 0.3s ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #menu.open {
-      transform: translateY(0);
-    }
+   /* Menu que desliza a partir da parte inferior */
+#menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: #ebebeb;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
 
-    /* Botão que abre/fecha o menu */
-    #open {
-      position: fixed;
-      bottom: -35px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: black;
-      cursor: pointer;
-      z-index: 10;
-      transition: transform 0.3s ease-in-out;
-    }
-    /* Quando o menu está aberto, o botão move-se para cima e gira 180º */
-    #open.open {
-      transform: translateX(-50%) translateY(-150px);
-    }
+  /* Scroll horizontal */
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  scroll-behavior: smooth;
+}
 
-    .word{
-      font-size: 1.5rem;
-      margin: 6%;
-      transform-origin: left center;
-      transition: transform 0.2s ease, color 0.2s ease, left 0.2s ease;
-    }
+#menu::-webkit-scrollbar {
+  height: 5px;
+}
+#menu::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+#menu.open {
+  transform: translateY(0);
+}
+
+/* Itens do menu */
+.word {
+  font-size: 1.5rem;
+  margin: 0 20px;
+  flex: 0 0 auto;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Botão que abre/fecha o menu */
+#open {
+  position: fixed;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
+#open.open {
+  transform: translateX(-50%) translateY(-150px);
+}
+
+#menu li#nistagmo {
+  pointer-events: auto; /* permite clique apenas no Nistagmo */
+  cursor: pointer;
+}
 
   </style>
 </head>
@@ -71,26 +97,25 @@
   <video id="camera" autoplay playsinline></video>
 
   <!-- Menu escondido inicialmente -->
-  <div id="menu">
-    <div class="word">Tritanopia</div>
-    <div class="word">Protanopia</div>
-    <div class="word">Deuteranopia</div>
-    <div class="word">Acromatopsia</div>
-    <div class="word">Estrabismo</div>
-    <div class="word">Nistagmo</div>
-    <div class="word">Escotomas</div>
-    <div class="word">Glaucoma</div>
-    <div class="word">Daltonismo</div>
-    <div class="word">Baixa Visão</div>
-    <div class="word">Astigmatismo</div>
-
-  </div>
-
+<ul id="menu">
+  <li class="word">Tritanopia</li>
+  <li class="word">Protanopia</li>
+  <li class="word">Deuteranopia</li>
+  <li class="word">Acromatopsia</li>
+  <li class="word">Estrabismo</li>
+  <li class="word" id="nistagmo">Nistagmo</li>
+  <li class="word">Escotomas</li>
+  <li class="word">Glaucoma</li>
+  <li class="word">Daltonismo</li>
+  <li class="word">Baixa Visão</li>
+  <li class="word">Astigmatismo</li>
+</ul> 
   <!-- Botão de abertura -->
   <div id="open">
     <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
   </div>
 
   <script src="teste.js"></script>
+    <script src="nistagmo.js"></script>
 </body>
 </html>

@@ -12,7 +12,8 @@ camera.style.left = "0";
 camera.style.transform = "translateX(0px)";
 
 
-const nistagmoItem = document.querySelector("#wordList li.nistagmo");
+const nistagmoItem = document.querySelector("#menu li#nistagmo");
+    console.log("entrou no scrit nistagmo");
 
 function ativarNistagmo() {
   if (nistagmoAtivo) return;
