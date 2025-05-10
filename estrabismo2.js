@@ -29,15 +29,15 @@ function setup() {
       switch (tipo) {
         case 1:
           vertical.classList.add("ativo");
-          console.log("Filtro vertical ativado (III par)");
+       
           break;
         case 2:
           horizontal.classList.add("ativo");
-          console.log("Filtro horizontal ativado (IV par)");
+         
           break;
         case 3:
           diagonal.classList.add("ativo");
-          console.log("Filtro diagonal ativado (VI par)");
+         
           break;
       }
     }
@@ -64,12 +64,16 @@ function applyFilter(displayWidth, displayHeight, yOffset) {
     if (currentFilter === 1) {
       // Filtro 1: deslocamento vertical
       image(cam, 0, yOffset - 30, displayWidth, displayHeight);
+         console.log("Filtro vertical ativado (III par)");
+
     } else if (currentFilter === 2) {
       // Filtro 2: deslocamento horizontal
       image(cam, 30, yOffset, displayWidth, displayHeight);
+       console.log("Filtro horizontal ativado (IV par)");
     } else if (currentFilter === 3) {
       // Filtro 3: deslocamento diagonal
       image(cam, 15, yOffset + 15, displayWidth, displayHeight);
+       console.log("Filtro diagonal ativado (VI par)");
     }
 
     noTint();
