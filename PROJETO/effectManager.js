@@ -1,4 +1,4 @@
-// effectManager.js - Sistema central de gerenciamento de efeitos
+// effectManager.js - Versão atualizada
 let currentEffect = null;
 const effectCallbacks = {};
 
@@ -38,6 +38,10 @@ function deactivateCurrentEffect() {
     currentEffect = null;
 }
 
+function isCurrentEffect(effectName) {
+    return currentEffect === effectName;
+}
+
 function isEffectActive() {
     return currentEffect !== null;
 }
@@ -47,5 +51,6 @@ window.EffectManager = {
     registerEffect,
     activateEffect,
     deactivateCurrentEffect,
+    isCurrentEffect,
     isEffectActive
 };
