@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
-  <title>Câmara com Menu -  teste.html</title>
+  <title>Câmara com Menu - teste.html</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- Vídeo de fundo com stream da câmara -->
   <video id="camera" autoplay playsinline></video>
 
   <!-- Menu escondido inicialmente -->
-<ul id="menu">
- 
-  <li class="word"data-filter="tritanopia">Tritanopia</li> <!-- daltonismo1 -->
-  <li class="word"data-filter="protanopia">Protanopia</li> <!--daltonismo2-->
-   <li class="word" data-filter="deuteranopia">Deuteranopia</li>
-  <li class="word" data-filter="acromatopsia">Acromatopsia</li>
+  <ul id="menu">
 
-  <li class="word"id="estrabismoVertical">Estrabismo III par</li> <!--duplica Vertiacl-->
-  <li class="word"id="estrabismoHorizontal">Estrabismo IV par</li>
-  <li class="word"id="estrabismoDiagonal">Estrabismo VI par</li>
+    <li class="word" data-filter="tritanopia">Tritanopia</li> <!-- daltonismo1 -->
+    <li class="word" data-filter="protanopia">Protanopia</li> <!--daltonismo2-->
+    <li class="word" data-filter="deuteranopia">Deuteranopia</li>
+    <li class="word" data-filter="acromatopsia">Acromatopsia</li>
 
-  <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
-  <li class="word">Escotomas</li>
-  <li class="word">Glaucoma</li>
- 
-</ul> 
+    <li class="word" id="estrabismoVertical">Estrabismo III par</li> <!--duplica Vertiacl-->
+    <li class="word" id="estrabismoHorizontal">Estrabismo IV par</li>
+    <li class="word" id="estrabismoDiagonal">Estrabismo VI par</li>
+
+    <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
+    <li class="word">Escotomas</li>
+    <li class="word">Glaucoma</li>
+
+  </ul>
   <!-- Botão de abertura -->
   <div id="open">
     <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
@@ -42,35 +44,37 @@
 
 
   <script src="teste.js"></script>
-    <script src="nistagmo.js"></script>
-    <script src="estrabismo.js"></script>
-    <script src="effectManager.js"></script>
-     <script src="daltonismo.js"></script>
+  <script src="info.js"></script>
+  <script src="nistagmo.js"></script>
+  <script src="estrabismo.js"></script>
+  <script src="effectManager.js"></script>
+  <script src="daltonismo.js"></script>
 
 
 
-     <!-- DALTONISMO SVG-->
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
-  <defs>
-    <filter id="tritanopia-filter" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="0.95 0.05  0     0 0
+  <!-- DALTONISMO SVG-->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+    <defs>
+      <filter id="tritanopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.95 0.05  0     0 0
                                           0     0.43  0.57  0 0
                                           0     0     0.30  0 0
-                                          0     0     0     1 0"/>
-    </filter>
-    <filter id="protanopia-filter" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="0.57 0.43  0     0 0
+                                          0     0     0     1 0" />
+      </filter>
+      <filter id="protanopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.57 0.43  0     0 0
                                           0.56 0.44  0     0 0
                                           0     0.24  0.76  0 0
-                                          0     0     0     1 0"/>
-    </filter>
-    <filter id="deuteranopia-filter" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="0.62 0.38  0     0 0
+                                          0     0     0     1 0" />
+      </filter>
+      <filter id="deuteranopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.62 0.38  0     0 0
                                           0.70 0.30  0     0 0
                                           0     0.30  0.70  0 0
-                                          0     0     0     1 0"/>
-    </filter>
-  </defs>
-</svg>
+                                          0     0     0     1 0" />
+      </filter>
+    </defs>
+  </svg>
 </body>
+
 </html>

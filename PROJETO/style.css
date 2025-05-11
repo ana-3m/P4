@@ -155,8 +155,22 @@ body {
 
 }
 
+
+/* ====================== INFORMACAO */
+
 #info{
     position: fixed;
     top: 2%;
     right: 1%;
+}
+
+#popupInfo{
+    display: none;
+    background-color:#ebebeb;
+    border-radius: 4px;
+    position: fixed;
+    top: 35%;
+    bottom: 35%;
+    right: 20%;
+    left: 20%;
 }
