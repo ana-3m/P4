@@ -1,3 +1,4 @@
+//teste.js
 // Ativar a câmara através de getUserMedia
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -27,3 +28,4 @@ openBtn.addEventListener("click", function(){
       icon.src = "imagem/up.png";
     }
   });
+

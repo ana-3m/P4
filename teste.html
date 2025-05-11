@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Câmara com Menu e Botão Animado</title>
+  <title>Câmara com Menu -  teste.html</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   <style>
     html, body {
@@ -30,6 +30,7 @@
   background: #ebebeb;
   transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
+  z-index: 10; 
 
   /* Scroll horizontal */
   display: flex;
@@ -70,11 +71,7 @@
 
 }
 
-.word.ativo {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-    transform: scale(1.05);
-}
 
 /* Botão que abre/fecha o menu */
 #open {
@@ -123,7 +120,7 @@
   <li class="word">Protanopia</li> <!--daltonismo2-->
   <li class="word">Deuteranopia</li> <!--daltonismo3 -->
   <li class="word">Acromatopsia</li> <!--daltonismo4 -->
-  <li class="word"id="estrabismoVertical">Estrabismo III par</li> <!--duplica-->
+  <li class="word"id="estrabismoVertical">Estrabismo III par</li> <!--duplica Vertiacl-->
   <li class="word"id="estrabismoHorizontal">Estrabismo IV par</li>
   <li class="word"id="estrabismoDiagonal">Estrabismo VI par</li>
 
@@ -139,6 +136,6 @@
 
   <script src="teste.js"></script>
     <script src="nistagmo.js"></script>
-    <script src="estrabismo3.js"></script>
+    <script src="estrabismoVertical.js"></script>
 </body>
 </html>

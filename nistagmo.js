@@ -25,25 +25,32 @@ function ativarNistagmo() {
 }
 
 function desativarNistagmo() {
+  if (!nistagmoAtivo) return;
   clearInterval(intervaloNistagmo);
   camera.style.transform = "translateX(0px) scaleX(1)";
   nistagmoAtivo = false;
   nistagmoItem.classList.remove("ativo");
 }
 
-// Corrigido: seletor agora usa #menu
 document.addEventListener("DOMContentLoaded", () => {
   const itens = document.querySelectorAll("#menu li");
+  
+  // Configura o clique no item Nistagmo
+  nistagmoItem.addEventListener("click", () => {
+    if (nistagmoAtivo) {
+      desativarNistagmo();
+      console.log("Nistagmo desativado");
+    } else {
+      ativarNistagmo();
+      console.log("Nistagmo ativado");
+    }
+  });
+
+  // Configura o clique em outros itens do menu para desativar o nistagmo
   itens.forEach(item => {
-    if (item.textContent.trim() === "Nistagmo") {
+    if (item.id !== "nistagmo") {
       item.addEventListener("click", () => {
-        if (nistagmoAtivo) {
-          desativarNistagmo();
-          console.log("desativado nistagmo");
-        } else {
-          ativarNistagmo();
-          console.log("ativado nistagmo");
-        }
+        desativarNistagmo();
       });
     }
   });
