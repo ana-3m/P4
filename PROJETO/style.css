@@ -1,114 +1,118 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     height: 100%;
     font-family: sans-serif;
-  }
+}
 
-  /* Estilo para o vídeo da câmara de fundo */
-  #camera {
+/* Estilo para o vídeo da câmara de fundo */
+#camera {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-  }
+}
 
- /* Menu que desliza a partir da parte inferior */
+/* Menu que desliza a partir da parte inferior */
 #menu {
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-height: 150px;
-background: #ebebeb;
-transform: translateY(100%);
-transition: transform 0.3s ease-in-out;
-z-index: 10; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: #ebebeb;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
 
-/* Scroll horizontal */
-display: flex;
-flex-direction: row;
-overflow-x: auto;
-overflow-y: hidden;
-white-space: nowrap;
-padding: 0;
-margin: 0;
-list-style: none;
-scroll-behavior: smooth;
+    /* Scroll horizontal */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    scroll-behavior: smooth;
 
 }
 
 #menu::-webkit-scrollbar {
-height: 5px;
+    height: 5px;
 }
+
 #menu::-webkit-scrollbar-thumb {
-background-color: #aaa;
-border-radius: 4px;
+    background-color: #aaa;
+    border-radius: 4px;
 }
+
 #menu.open {
-transform: translateY(0);
+    transform: translateY(0);
 }
 
 
 
 #menu li:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 /* Estilo específico para o Nistagmo ativo */
 #nistagmo.ativo {
-box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
+
 /* Estilos para os itens ativos dos filtros de estrabismo */
 #estrabismoVertical.ativo {
-box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 #estrabismoHorizontal.ativo {
- box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 #estrabismoDiagonal.ativo {
- box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 [data-filter="tritanopia"].ativo {
-box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 [data-filter="protanopia"].ativo {
-box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 [data-filter="deuteranopia"].ativo {
-box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 [data-filter="acromatopsia"].ativo {
-   box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 
 /* Estilo base para todos os itens ativos */
 #menu li.ativo {
-  position: relative;
-  z-index: 11;
- 
-  transition: all 0.3s ease;
-  transform: scale(1.02);
+    position: relative;
+    z-index: 11;
+
+    transition: all 0.3s ease;
+    transform: scale(1.02);
 }
 
 /* Itens do menu */
 .word {
-font-size: 3rem;
-margin: 0 20px;
-flex: 0 0 auto;
-display: inline-block;
-padding: 50px 20px;
-cursor: pointer;
-user-select: none;
- 
-transition: transform 0.2s ease, color 0.2s ease;
+    font-size: 3rem;
+    margin: 0 20px;
+    flex: 0 0 auto;
+    display: inline-block;
+    padding: 50px 20px;
+    cursor: pointer;
+    user-select: none;
+
+    transition: transform 0.2s ease, color 0.2s ease;
 
 
 }
@@ -117,34 +121,42 @@ transition: transform 0.2s ease, color 0.2s ease;
 
 /* Botão que abre/fecha o menu */
 #open {
-position: fixed;
-bottom: -35px;
-left: 50%;
-transform: translateX(-50%);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: black;
-cursor: pointer;
-z-index: 10;
-transition: transform 0.3s ease-in-out;
+    position: fixed;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
 }
 
 
 #open.open {
-transform: translateX(-50%) translateY(-150px);
+    transform: translateX(-50%) translateY(-150px);
 
 }
 
 #menu li#nistagmo {
-pointer-events: auto; /* permite clique apenas no Nistagmo */
-cursor: pointer;
+    pointer-events: auto;
+    /* permite clique apenas no Nistagmo */
+    cursor: pointer;
 
 }
+
 #menu li#estrabismoVertical {
-pointer-events: auto; /* permite clique */
-cursor: pointer;
+    pointer-events: auto;
+    /* permite clique */
+    cursor: pointer;
 
 }
 
+#info{
+    position: fixed;
+    top: 2%;
+    right: 1%;
+}
