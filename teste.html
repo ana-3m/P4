@@ -56,6 +56,40 @@
   transform: translateY(0);
 }
 
+
+
+#menu li:active {
+    transform: scale(0.98);
+}
+
+/* Estilo específico para o Nistagmo ativo */
+#nistagmo.ativo {
+box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+/* Estilos para os itens ativos dos filtros de estrabismo */
+#estrabismoVertical.ativo {
+box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#estrabismoHorizontal.ativo {
+   box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#estrabismoDiagonal.ativo {
+   box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+
+
+/* Estilo base para todos os itens ativos */
+#menu li.ativo {
+    position: relative;
+    z-index: 11;
+   
+    transition: all 0.3s ease;
+    transform: scale(1.02);
+}
+
 /* Itens do menu */
 .word {
   font-size: 3rem;
@@ -136,6 +170,7 @@
 
   <script src="teste.js"></script>
     <script src="nistagmo.js"></script>
-    <script src="estrabismoVertical.js"></script>
+    <script src="estrabismo.js"></script>
+    <script src="effectManager.js"></script>
 </body>
 </html>
