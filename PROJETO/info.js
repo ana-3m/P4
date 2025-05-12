@@ -43,6 +43,12 @@ document.getElementById('iconInfo').addEventListener('click', () => {
         `;
             popup.style.display = 'flex';
             infoIcon.src = 'imagem/infoClose.svg';
+
+            // menu baixa
+            menu.classList.remove('open');
+            openBtn.classList.remove('open');
+            icon.src = 'imagem/up.png';
+
         } else {
             // popup none e troca para icon original
             popup.style.display = 'none';
