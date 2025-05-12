@@ -76,6 +76,18 @@ body {
     box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
+#multiplosEscotomas.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#escotomaCentral.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#visaoTubolar.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
 [data-filter="tritanopia"].ativo {
     box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
