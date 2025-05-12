@@ -58,69 +58,6 @@ body {
     transform: scale(0.98);
 }
 
-/* Estilo específico para o Nistagmo ativo */
-#nistagmo.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-/* Estilos para os itens ativos dos filtros de estrabismo */
-#estrabismoVertical.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#estrabismoHorizontal.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#estrabismoDiagonal.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#multiplosEscotomas.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#escotomaBinasal.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#escotomaBitemporal.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#escotomaAltitudinalInferior.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#escotomaAltitudinalSuperior.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#escotomaCentral.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-#visaoTubolar.ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-[data-filter="tritanopia"].ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-[data-filter="protanopia"].ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-[data-filter="deuteranopia"].ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-[data-filter="acromatopsia"].ativo {
-    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
-}
-
-
 /* Estilo base para todos os itens ativos */
 #menu li.ativo {
     position: relative;
@@ -128,6 +65,8 @@ body {
 
     transition: all 0.3s ease;
     transform: scale(1.02);
+
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
 /* Itens do menu */
