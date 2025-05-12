@@ -80,6 +80,22 @@ body {
     box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
 
+#escotomaBinasal.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#escotomaBitemporal.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#escotomaAltitudinalInferior.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+#escotomaAltitudinalSuperior.ativo {
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
 #escotomaCentral.ativo {
     box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
 }
