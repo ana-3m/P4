@@ -11,6 +11,11 @@ const filterInfo = {
         t: "Protanopia",
         p1: "A protanopia é uma forma de daltonismo em que as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor vermelha. ",
         p2: "Os indivíduos com protanopia podem confundir tons de vermelho com verde ou castanho, e tendem a ver o vermelho como uma cor mais escura ou acinzentada. Esta condição é hereditária e afecta principalmente os homens."
+    },
+    deuteranopia : {
+        t: "Deuteranopia",
+        p1: "A deuteranopia é uma forma comum de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor verde.  ",
+        p2: "Indivíduos com deuteranopia podem confundir tons de verde com vermelho ou castanho, tornando certas cores mais difíceis de identificar com precisão."
     }
 
     /*
@@ -29,7 +34,7 @@ document.querySelectorAll('#menu .word').forEach(item => {
     item.addEventListener('click', () => {
         selectedFilter = item.getAttribute('data-filter') || item.id;
 
-        // Atualiza o conteúdo se o popup estiver visível
+        // atualiza o conteúdo se o popup estiver visível
         if (popup.style.display === 'flex' && filterInfo[selectedFilter]) {
             const info = filterInfo[selectedFilter];
             popupContent.innerHTML = `
