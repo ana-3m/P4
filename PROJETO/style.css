@@ -163,14 +163,28 @@ body {
   
   #popupContent {
     display: flex;
-    text-align: left;
+    align-items: center;
+    flex-direction: column;
   }
 
   .coluna{
     color: #ebebeb;
-    width: 50%;
+    width: 40%;
     font-size: 2rem;
     padding: 5%;
     opacity: 100%;
+    text-align: left;
+  }
+
+  .colunas{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
   }
   
+  .titulo{
+    color: #ebebeb;
+    font-size: 3rem;
+    padding: 5%;
+    opacity: 100%;
+  }

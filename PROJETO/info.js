@@ -3,6 +3,7 @@ let selectedFilter = null;
 // informacao para cada filtro
 const filterInfo = {
     tritanopia: {
+        t: "Tritanopia",
         p1: "A tritanopia é uma forma rara de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro azul-amarelo.",
         p2: "É causada pela ausência ou disfunção dos cones do olho responsáveis por perceber o azul. Podem confundir tons de azul com verde, e amarelo com roxo."
     }
@@ -38,8 +39,11 @@ document.getElementById('iconInfo').addEventListener('click', () => {
         if (!isVisible) {
             // popup aparece e troca o icon
             document.getElementById('popupContent').innerHTML = `
-          <div class="coluna">${info.p1}</div>
-          <div class="coluna">${info.p2}</div>
+            <div class="titulo">${info.t}</div>
+            <div class="colunas">
+                <div class="coluna">${info.p1}</div>
+                <div class="coluna">${info.p2}</div>
+            </div>
         `;
             popup.style.display = 'flex';
             infoIcon.src = 'imagem/infoClose.svg';
