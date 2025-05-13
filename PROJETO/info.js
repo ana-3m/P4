@@ -6,6 +6,11 @@ const filterInfo = {
         t: "Tritanopia",
         p1: "A tritanopia é uma forma rara de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro azul-amarelo.",
         p2: "É causada pela ausência ou disfunção dos cones do olho responsáveis por perceber o azul. Podem confundir tons de azul com verde, e amarelo com roxo."
+    },
+    protanopia : {
+        t: "Protanopia",
+        p1: "A protanopia é uma forma de daltonismo em que as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor vermelha. ",
+        p2: "Os indivíduos com protanopia podem confundir tons de vermelho com verde ou castanho, e tendem a ver o vermelho como uma cor mais escura ou acinzentada. Esta condição é hereditária e afecta principalmente os homens."
     }
 
     /*
@@ -23,6 +28,18 @@ const filterInfo = {
 document.querySelectorAll('#menu .word').forEach(item => {
     item.addEventListener('click', () => {
         selectedFilter = item.getAttribute('data-filter') || item.id;
+
+        // Atualiza o conteúdo se o popup estiver visível
+        if (popup.style.display === 'flex' && filterInfo[selectedFilter]) {
+            const info = filterInfo[selectedFilter];
+            popupContent.innerHTML = `
+                <div class="titulo">${info.t}</div>
+                <div class="colunas">
+                    <div class="coluna">${info.p1}</div>
+                    <div class="coluna">${info.p2}</div>
+                </div>
+            `;
+        }
     });
 });
 
