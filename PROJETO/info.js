@@ -3,19 +3,24 @@ let selectedFilter = null;
 // informacao para cada filtro
 const filterInfo = {
     tritanopia: {
-        t: "Tritanopia",
+        t: "Tritanópia",
         p1: "A tritanopia é uma forma rara de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro azul-amarelo.",
         p2: "É causada pela ausência ou disfunção dos cones do olho responsáveis por perceber o azul. Podem confundir tons de azul com verde, e amarelo com roxo."
     },
     protanopia: {
-        t: "Protanopia",
+        t: "Protanópia",
         p1: "A protanopia é uma forma de daltonismo em que as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor vermelha. ",
         p2: "Os indivíduos com protanopia podem confundir tons de vermelho com verde ou castanho, e tendem a ver o vermelho como uma cor mais escura ou acinzentada. Esta condição é hereditária e afecta principalmente os homens."
     },
     deuteranopia: {
-        t: "Deuteranopia",
+        t: "Deuteranópia",
         p1: "A deuteranopia é uma forma comum de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor verde.  ",
         p2: "Indivíduos com deuteranopia podem confundir tons de verde com vermelho ou castanho, tornando certas cores mais difíceis de identificar com precisão."
+    },
+    acromatopsia: {
+        t: "Acromatópsia",
+        p1: "ausencia total da precepção de cores",
+        p2: "??"
     },
     estrabismoVertical: {
         t: "Estrabismo Vertical",
