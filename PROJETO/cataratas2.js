@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // cataratas2.js - Filtro de cataratas simplificado (sem shaders)
 let cataractElements = {
     overlay: null,
@@ -11,11 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
         stopCataratas
     );
 
+=======
+// cataratas2.js - Filtro de cataratas usando efeito de blur
+let cataratasCanvas;
+let p5Instance;
+let isCataratasActive = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Registra o efeito
+    EffectManager.registerEffect(
+        'cataratas',
+        activateCataratas,
+        deactivateCataratas
+    );
+
+    // Configura o listener
+>>>>>>> Stashed changes
     document.getElementById('cataratas')?.addEventListener('click', () => {
         EffectManager.activateEffect('cataratas');
     });
 });
 
+<<<<<<< Updated upstream
 function startCataratas() {
     const camera = document.getElementById('camera');
     
@@ -62,10 +80,22 @@ function startCataratas() {
         }
         cataractElements.overlay.style.backgroundColor = `rgba(255, 255, 255, ${currentOpacity})`;
     }, 100);
+=======
+function activateCataratas() {
+    if (isCataratasActive) return;
+    
+    const camera = document.getElementById('camera');
+    camera.style.display = 'none'; // Esconde o vídeo original
+    
+    // Inicializa p5.js
+    p5Instance = new p5(cataratasSketch, document.body);
+    isCataratasActive = true;
+>>>>>>> Stashed changes
     
     document.getElementById('cataratas').classList.add('ativo');
 }
 
+<<<<<<< Updated upstream
 function stopCataratas() {
     const camera = document.getElementById('camera');
     
@@ -82,4 +112,54 @@ function stopCataratas() {
     // Restaura a câmera original
     camera.style.display = 'block';
     document.getElementById('cataratas').classList.remove('ativo');
+=======
+function deactivateCataratas() {
+    if (!isCataratasActive) return;
+    
+    // Remove o canvas do p5
+    if (p5Instance) {
+        p5Instance.remove();
+        p5Instance = null;
+    }
+    
+    // Mostra o vídeo original novamente
+    const camera = document.getElementById('camera');
+    camera.style.display = 'block';
+    isCataratasActive = false;
+    
+    document.getElementById('cataratas').classList.remove('ativo');
+}
+
+// Sketch p5.js para o efeito de cataratas
+function cataratasSketch(p) {
+    let cam;
+    let blurAmount = 10; // Intensidade do blur
+    
+    p.setup = function() {
+        // Cria um canvas do tamanho da câmera
+        const camera = document.getElementById('camera');
+        p.createCanvas(camera.offsetWidth, camera.offsetHeight);
+        
+        // Captura o vídeo da câmera
+        cam = p.createCapture(p.VIDEO);
+        cam.size(p.width, p.height);
+        cam.hide();
+    };
+    
+    p.draw = function() {
+        // Aplica o efeito de blur
+        p.image(cam, 0, 0, p.width, p.height);
+        p.filter(p.BLUR, blurAmount);
+        
+        // Adiciona um leve efeito de "opacidade" para simular catarata
+        p.fill(255, 255, 255, 30);
+        p.rect(0, 0, p.width, p.height);
+    };
+    
+    p.windowResized = function() {
+        const camera = document.getElementById('camera');
+        p.resizeCanvas(camera.offsetWidth, camera.offsetHeight);
+        cam.size(p.width, p.height);
+    };
+>>>>>>> Stashed changes
 }
