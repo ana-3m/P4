@@ -16,6 +16,12 @@ body {
     z-index: 1; /* Garante que a câmara não está acima do menu */
 }
 
+#logo{
+    position:fixed;
+    top:2%;
+    left:2%; 
+
+}
 /* Menu que desliza a partir da parte inferior */
 #menu {
     position: fixed;
