@@ -7,26 +7,77 @@ const filterInfo = {
         p1: "A tritanopia é uma forma rara de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro azul-amarelo.",
         p2: "É causada pela ausência ou disfunção dos cones do olho responsáveis por perceber o azul. Podem confundir tons de azul com verde, e amarelo com roxo."
     },
-    protanopia : {
+    protanopia: {
         t: "Protanopia",
         p1: "A protanopia é uma forma de daltonismo em que as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor vermelha. ",
         p2: "Os indivíduos com protanopia podem confundir tons de vermelho com verde ou castanho, e tendem a ver o vermelho como uma cor mais escura ou acinzentada. Esta condição é hereditária e afecta principalmente os homens."
     },
-    deuteranopia : {
+    deuteranopia: {
         t: "Deuteranopia",
         p1: "A deuteranopia é uma forma comum de daltonismo, onde as pessoas têm dificuldade em distinguir cores no espectro vermelho-verde. É causada pela ausência ou disfunção dos cones da retina responsáveis por perceber a cor verde.  ",
         p2: "Indivíduos com deuteranopia podem confundir tons de verde com vermelho ou castanho, tornando certas cores mais difíceis de identificar com precisão."
+    },
+    estrabismoVertical: {
+        t: "Estrabismo Vertical",
+        p1: "Ocorre quando há um desvio vertical de um dos olhos.",
+        p2: "Ex: parésia do ramo superior do III par."
+    },
+    estrabismoHorizontal: {
+        t: "Estrabismo Horizontal",
+        p1: "Ocorre quando há um desvio horizontal de um dos olhos.",
+        p2: "Ex: parésia do VI par."
+    },
+    estrabismoComplexo: {
+        t: "Estrabismo Complexo",
+        p1: "Ocorre quando há um desvio horizontal e vertical de um dos olhos.",
+        p2: "Ex: parésia do III par."
+    },
+    nistagmo: {
+        t: "Nistagmo",
+        p1: "Movimentos involuntarios e rápidos dos olhos.",
+        p2: "Pode ser congénito ou adquirido em doenças do sistema nervoso central."
+    },
+    multiplosEscotomas: {
+        t: "Multiplos Escotomas",
+        p1: "Manchas escuras no campo visual.",
+        p2: "Degenerescência Macular da Idade (DMI)."
+    },
+    escotomaBinasal: {
+        t: "Escotoma Binasal",
+        p1: "Ausencia de visão no campo nasal de cada olho.",
+        p2: "Doenças das vias óticas a nível central."
+    },
+    escotomaBitemporal: {
+        t: "Escotoma Bitemporal",
+        p1: "Ausencia de visão no campo temporal de cada olho.",
+        p2: "Doenças das vias óticas a nível do quiasma ótico."
+    },
+    escotomaAltitudinalInferior: {
+        t: "Escotoma Altitudinal Inferior",
+        p1: "Ausencia de visão na metade inferior do campo visual.",
+        p2: "Oclusão vascular retina superior."
+    },
+    escotomaAltitudinalSuperior: {
+        t: "Escotoma Altitudinal Superior",
+        p1: "Ausencia de visão na metade superior do campo visual.",
+        p2: "Oclusão vascular da retina inferior."
+    },
+    escotomaCentral: {
+        t: "Escotoma Central",
+        p1: "Ausencia de visão central.",
+        p2: "Degenerescência Macular da Idade (DMI)."
+    },
+    visaoTubular: {
+        t: "Visão Tubular",
+        p1: "Perda do campo visual periférico, que resulta numa visão em tubo.",
+        p2: "Estadio final de Glaucoma ou em doenças degenerativas da retina."
+    },
+    cataratas: {
+        t: "Cataratas",
+        p1: "Diminuição da visão por opacidade do cristalino.",
+        p2: "Geralmente surge com a idade."
     }
 
-    /*
-  protanopia: "Protanopia: deficiência na percepção do vermelho.",
-  deuteranopia: "Deuteranopia: deficiência na percepção do verde.",
-  acromatopsia: "Acromatopsia: ausência total de percepção de cores.",
-  estrabismoVertical: "Estrabismo vertical (III par): desalinhamento dos olhos no eixo vertical.",
-  estrabismoHorizontal: "Estrabismo horizontal (IV par): desalinhamento lateral.",
-  estrabismoDiagonal: "Estrabismo diagonal (VI par): desalinhamento em diagonal.",
-  nistagmo: "Nistagmo: movimentos involuntários e rápidos dos olhos.",
-  */
 };
 
 // detecta item clicado

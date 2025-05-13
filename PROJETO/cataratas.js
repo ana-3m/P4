@@ -1,93 +1,69 @@
-// catarata.js
-// catarata.js
-const CATARATAS_EFFECT = {
-    id: 'cataratas',
-    type: 'cataratas',
-    opacity: 0.7,
-    blurAmount: 8
-};
+let cataratasCanvas = null;
+let isCataratasActive = false;
 
-let canvasOverlay = null;
-let animationFrameId = null;
+document.addEventListener("DOMContentLoaded", () => {
+  EffectManager.registerEffect("cataratas", activateCataratas, deactivateCataratas);
 
-document.addEventListener('DOMContentLoaded', () => {
-    EffectManager.registerEffect(
-        CATARATAS_EFFECT.id,
-        () => activateCataratasEffect(),
-        () => deactivateCataratasEffect()
-    );
+  const btnCataratas = document.getElementById("cataratas");
+  if (btnCataratas) {
+    btnCataratas.addEventListener("click", () => {
+      EffectManager.activateEffect("cataratas");
+    });
+  }
 });
 
-function activateCataratasEffect() {
-    // Adiciona a classe ativo ao item do menu
-    const menuItem = document.getElementById(CATARATAS_EFFECT.id);
-    if (menuItem) menuItem.classList.add('ativo');
+function activateCataratas() {
+  if (isCataratasActive) return;
 
-    const videoElement = document.getElementById('camera');
-    if (!videoElement) return;
+  cataratasCanvas = document.createElement("canvas");
+  cataratasCanvas.id = "cataratasCanvas";
+  cataratasCanvas.style.position = "fixed";
+  cataratasCanvas.style.top = "0";
+  cataratasCanvas.style.left = "0";
+  cataratasCanvas.style.width = "100vw";
+  cataratasCanvas.style.height = "100vh";
+  cataratasCanvas.style.pointerEvents = "none";
+  cataratasCanvas.style.zIndex = "1";
 
-    // Cria o canvas overlay
-    canvasOverlay = document.createElement('canvas');
-    canvasOverlay.id = "cataratasOverlay";
-    canvasOverlay.classList.add('cataratas-effect'); // Adiciona classe para controle via CSS
-    document.body.appendChild(canvasOverlay);
+  cataratasCanvas.width = window.innerWidth;
+  cataratasCanvas.height = window.innerHeight;
+  document.body.appendChild(cataratasCanvas);
 
-    // Estilos podem ser movidos para o CSS
-    canvasOverlay.style.position = 'fixed';
-    canvasOverlay.style.top = '0';
-    canvasOverlay.style.left = '0';
-    canvasOverlay.style.width = '100%';
-    canvasOverlay.style.height = '100%';
-    canvasOverlay.style.pointerEvents = 'none';
-    canvasOverlay.style.zIndex = '2';
+  isCataratasActive = true;
+  document.getElementById("cataratas").classList.add("ativo");
 
-    function resizeCanvas() {
-        if (!canvasOverlay || !videoElement) return;
-        canvasOverlay.width = videoElement.videoWidth || window.innerWidth;
-        canvasOverlay.height = videoElement.videoHeight || window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    function drawEffect() {
-        if (!canvasOverlay) return;
-
-        const ctx = canvasOverlay.getContext('2d');
-        ctx.clearRect(0, 0, canvasOverlay.width, canvasOverlay.height);
-        
-        // Aplica o efeito de blur
-        ctx.filter = `blur(${CATARATAS_EFFECT.blurAmount}px)`;
-        ctx.drawImage(videoElement, 0, 0, canvasOverlay.width, canvasOverlay.height);
-        
-        // Adiciona a camada branca semi-transparente
-        ctx.filter = 'none';
-        ctx.fillStyle = `rgba(255, 255, 255, ${CATARATAS_EFFECT.opacity})`;
-        ctx.fillRect(0, 0, canvasOverlay.width, canvasOverlay.height);
-
-        animationFrameId = requestAnimationFrame(drawEffect);
-    }
-
-    drawEffect();
+  // Atualiza o efeito a cada 100ms para evitar sobrecarga
+  setInterval(drawCataratas, 100);
 }
 
-function deactivateCataratasEffect() {
-    // Remove a classe ativo do item do menu
-    const menuItem = document.getElementById(CATARATAS_EFFECT.id);
-    if (menuItem) menuItem.classList.remove('ativo');
+function deactivateCataratas() {
+  if (!isCataratasActive) return;
 
-    // Limpa a animação
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-    }
+  if (cataratasCanvas) {
+    cataratasCanvas.remove();
+    cataratasCanvas = null;
+  }
 
-    // Remove o canvas
-    if (canvasOverlay) {
-        canvasOverlay.remove();
-        canvasOverlay = null;
-    }
+  isCataratasActive = false;
+  document.getElementById("cataratas").classList.remove("ativo");
 }
 
-window.deactivateAllEffects = function() {
-    deactivateCataratasEffect();
-};
+function drawCataratas() {
+    if (!cataratasCanvas) return; // Evita erro se o canvas não foi criado corretamente
+
+    const ctx = cataratasCanvas.getContext("2d");
+    const camera = document.getElementById("camera");
+
+    if (!camera || !camera.srcObject) return; // Verifica se a câmara está ativa
+
+    ctx.clearRect(0, 0, cataratasCanvas.width, cataratasCanvas.height);
+    
+    // Aplica efeito de blur
+    ctx.filter = "blur(8px)";
+    ctx.drawImage(camera, 0, 0, cataratasCanvas.width, cataratasCanvas.height);
+
+    // Overlay branco translúcido
+    ctx.filter = "none";
+    ctx.fillStyle = "rgba(60, 60, 60, 0.35)";
+    ctx.fillRect(0, 0, cataratasCanvas.width, cataratasCanvas.height);
+}

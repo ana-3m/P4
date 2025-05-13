@@ -43,7 +43,7 @@ const ESCOTOMAS_EFFECTS = {
         ],
     },
     VISAO_TUBULAR: {
-        id: 'visaoTubolar',
+        id: 'visaoTubular',
         type: 'tubular',
         radius: 10, // Raio da área central clara
     }
@@ -179,7 +179,7 @@ function activateOcularEffect(effect) {
     canvas.style.width = '100vw';
     canvas.style.height = '100vh';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '2';
+    canvas.style.zIndex = '1';
 
     document.body.appendChild(canvas);
 

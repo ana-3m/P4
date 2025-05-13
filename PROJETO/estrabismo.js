@@ -13,7 +13,7 @@ const EFFECTS = {
         color: 'rgba(33, 150, 243, 0.7)'
     },
     DIAGONAL: {
-        id: 'estrabismoDiagonal',
+        id: 'estrabismoComplexo',
         transform: 'translate(20px, -20px)',
         color: 'rgba(156, 39, 176, 0.7)'
     }

@@ -13,6 +13,7 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    z-index: 1; /* Garante que a câmara não está acima do menu */
 }
 
 /* Menu que desliza a partir da parte inferior */
@@ -126,14 +127,12 @@ body {
     pointer-events: auto;
     /* permite clique */
     cursor: pointer;
+}
 
-<<<<<<< Updated upstream
-=======
 /* Efeito de Cataratas */
 #menu li#cataratas.ativo {
       pointer-events: auto;
     cursor: pointer;  
->>>>>>> Stashed changes
 }
 
 /* ====================== INFORMACAO */
