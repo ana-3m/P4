@@ -2,7 +2,7 @@
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({
         video: {
-            facingMode: "user", // Use "user" para a câmara frontal ou "environment" para a traseira
+            facingMode: { ideal: "environment" }, // Use "user" para a câmara frontal ou "environment" para a traseira
             width: { ideal: 1280 },
             height: { ideal: 720 }
         }
