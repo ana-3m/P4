@@ -1,0 +1,282 @@
+/*style.css*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+/* Estilo para o vídeo da câmara de fundo */
+#camera {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+    /* Garante que a câmara não está acima do menu */
+}
+ HEAD
+.logo{
+    display: inline-block; 
+   color: black; 
+    position:absolute;
+   
+   > p{ left: 5%;
+    top: 2%;
+    position: fixed;
+   }
+}
+#logo{
+    position:fixed;
+    top:2%;
+    left:1%; 
+}
+
+#logo {
+    position: fixed;
+    top: 2%;
+    left: 1%;
+
+
+}
+
+/* Menu que desliza a partir da parte inferior */
+#menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: #ebebeb;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 11;
+
+    /* Scroll horizontal */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    scroll-behavior: smooth;
+
+}
+
+#menu::-webkit-scrollbar {
+    height: 5px;
+}
+
+#menu::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+}
+
+#menu.open {
+    transform: translateY(0);
+}
+
+
+
+#menu li:active {
+    transform: scale(0.98);
+}
+
+/* Estilo base para todos os itens ativos */
+#menu li.ativo {
+    position: relative;
+    z-index: 11;
+
+    transition: all 0.3s ease;
+    transform: scale(1.02);
+
+    box-shadow: 0 0 15px rgba(3, 4, 4, 0.7);
+}
+
+/* Itens do menu */
+.word {
+    font-size: 3rem;
+    margin: 0 20px;
+    flex: 0 0 auto;
+    display: inline-block;
+    padding: 50px 20px;
+    cursor: pointer;
+    user-select: none;
+
+    transition: transform 0.2s ease, color 0.2s ease;
+
+
+}
+
+
+
+/* Botão que abre/fecha o menu */
+#open {
+    position: fixed;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+#open.open {
+    transform: translateX(-50%) translateY(-150px);
+
+}
+
+#menu li#nistagmo {
+    pointer-events: auto;
+    /* permite clique apenas no Nistagmo */
+    cursor: pointer;
+
+}
+
+#menu li#estrabismoVertical {
+    pointer-events: auto;
+    /* permite clique */
+    cursor: pointer;
+
+}
+
+#menu li#cataratas {
+    pointer-events: auto;
+    /* permite clique */
+    cursor: pointer;
+}
+
+/* Efeito de Cataratas */
+#menu li#cataratas.ativo {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* ====================== CAMARAS */
+
+#changeCam {
+     position: fixed; 
+     bottom: 20px; 
+     left: 20px; 
+     z-index: 5;
+}
+
+/* ====================== FULLSCREEN */
+
+#fullscreenButton {
+    position: fixed;
+    top: 2%;
+    right: 5%;
+    z-index: 100;
+}
+
+/* ====================== INFORMACAO */
+
+#info {
+    position: fixed;
+    top: 2%;
+    right: 1%;
+    z-index: 100;
+}
+
+/*
+#popupInfo {
+    display: none;
+    background-color: #ebebeb;
+    border-radius: 4px;
+    position: fixed;
+    top: 20%;
+    bottom: 35%;
+    right: 20%;
+    left: 20%;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+    */
+
+#popupInfo {
+    display: none;
+    background-color: #232323;
+    opacity: 100%;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    color: white;
+    z-index: 50;
+}
+
+#popupContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.coluna {
+    color: #ebebeb;
+    width: 40%;
+    font-size: 2rem;
+    padding: 5%;
+    padding-top: 0;
+    opacity: 100%;
+    text-align: left;
+}
+
+.colunas {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.titulo {
+    color: #ebebeb;
+    font-size: 3rem;
+    padding: 3%;
+    opacity: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .coluna {
+        font-size: 1rem;
+    }
+}
+
+
+#rotateOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    /* fundo semitransparente */
+    display: none;
+    /* inicial, oculto */
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    /* acima de todos os outros elementos */
+}
+
+#rotateOverlay img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+}
