@@ -4,18 +4,18 @@
 const EFFECTS = {
     VERTICAL: {
         id: 'estrabismoVertical',
-        transform: 'translateY(-30px)',
-        color: 'rgba(76, 175, 80, 0.7)'
+        transform: 'translateY(-20px)',
+        color: 'rgba(20, 20, 20, 0.7)'
     },
     HORIZONTAL: {
         id: 'estrabismoHorizontal',
-        transform: 'translateX(30px)',
-        color: 'rgba(33, 150, 243, 0.7)'
+        transform: 'translateX(20px)',
+        color:'rgba(20, 20, 20, 0.7)'
     },
     DIAGONAL: {
         id: 'estrabismoComplexo',
-        transform: 'translate(20px, -20px)',
-        color: 'rgba(156, 39, 176, 0.7)'
+        transform: 'translate(10px, -10px)',
+        color: 'rgba(20, 20, 20, 0.7)'
     }
 };
 
