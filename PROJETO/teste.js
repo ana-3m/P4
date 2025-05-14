@@ -76,12 +76,17 @@ function startCamera(facingMode) {
       currentStream = stream;  // Armazena o stream atual para possíveis futuras paradas
       const camera = document.getElementById('camera');
       camera.srcObject = stream;
+
+      // Aplica espelhamento **apenas** se for a câmera frontal
+      camera.style.transform = (facingMode === "user") ? "scaleX(-1)" : "none";
+
       camera.play();
     })
     .catch(function (err) {
       console.error("Erro ao aceder à câmara:", err);
     });
 }
+
 
 
 // INICIALIZAÇÃO AO CARREGAR A PÁGINA
