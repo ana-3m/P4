@@ -209,3 +209,21 @@ body {
     padding: 3%;
     opacity: 100%;
   }
+
+  #rotateOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);  /* fundo semitransparente */
+  display: none;      /* inicial, oculto */
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;     /* acima de todos os outros elementos */
+}
+#rotateOverlay img {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}
