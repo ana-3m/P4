@@ -13,15 +13,17 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: 1; /* Garante que a câmara não está acima do menu */
+    z-index: 1;
+    /* Garante que a câmara não está acima do menu */
 }
 
-#logo{
-    position:fixed;
-    top:2%;
-    left:1%; 
+#logo {
+    position: fixed;
+    top: 2%;
+    left: 1%;
 
 }
+
 /* Menu que desliza a partir da parte inferior */
 #menu {
     position: fixed;
@@ -129,6 +131,7 @@ body {
     cursor: pointer;
 
 }
+
 #menu li#cataratas {
     pointer-events: auto;
     /* permite clique */
@@ -137,13 +140,13 @@ body {
 
 /* Efeito de Cataratas */
 #menu li#cataratas.ativo {
-      pointer-events: auto;
-    cursor: pointer;  
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 /* ====================== INFORMACAO */
 
-#info{
+#info {
     position: fixed;
     top: 2%;
     right: 1%;
@@ -166,7 +169,7 @@ body {
   }
     */
 
-    #popupInfo{
+#popupInfo {
     display: none;
     background-color: #232323;
     opacity: 100%;
@@ -177,17 +180,17 @@ body {
     align-items: center;
     position: absolute;
     top: 0;
-    color: white; 
+    color: white;
     z-index: 50;
-    }
-  
-  #popupContent {
+}
+
+#popupContent {
     display: flex;
     align-items: center;
     flex-direction: column;
-  }
+}
 
-  .coluna{
+.coluna {
     color: #ebebeb;
     width: 40%;
     font-size: 2rem;
@@ -195,45 +198,49 @@ body {
     padding-top: 0;
     opacity: 100%;
     text-align: left;
-  }
+}
 
-  .colunas{
+.colunas {
     display: flex;
     width: 100%;
     justify-content: space-around;
-  }
-  
-  .titulo{
+}
+
+.titulo {
     color: #ebebeb;
     font-size: 3rem;
     padding: 3%;
     opacity: 100%;
-  }
+}
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1000px) {
     .titulo{
-    font-size: 0.5rem;
+    font-size: 1.5rem;
   }
   .coluna {
-    font-size: 0.2rem; /* ou outro tamanho que você achar adequado */
-  }
+    font-size:1rem;
+  } 
 }
 
 
-  #rotateOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);  /* fundo semitransparente */
-  display: none;      /* inicial, oculto */
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;     /* acima de todos os outros elementos */
+#rotateOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    /* fundo semitransparente */
+    display: none;
+    /* inicial, oculto */
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    /* acima de todos os outros elementos */
 }
+
 #rotateOverlay img {
-  max-width: 80%;
-  height: auto;
-  margin-bottom: 20px;
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
 }
