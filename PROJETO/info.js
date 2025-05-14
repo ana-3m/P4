@@ -107,15 +107,17 @@ document.querySelectorAll('#menu .word').forEach(item => {
 // clica no botao do icon 
 const infoIcon = document.getElementById('iconInfo');
 const popup = document.getElementById('popupInfo');
+//partes do menu para baixar
+const openBtn = document.getElementById("open");
+const menu = document.getElementById("menu");
 
 document.getElementById('iconInfo').addEventListener('click', () => {
     if (selectedFilter && filterInfo[selectedFilter]) {
         const info = filterInfo[selectedFilter];
         const isVisible = popup.style.display === 'flex';
 
-        // se estiver vivivel então popup aparece
         if (!isVisible) {
-            // popup aparece e troca o icon
+            // Atualiza o conteúdo do popup
             document.getElementById('popupContent').innerHTML = `
             <div class="titulo">${info.t}</div>
             <div class="colunas">
@@ -126,19 +128,15 @@ document.getElementById('iconInfo').addEventListener('click', () => {
             popup.style.display = 'flex';
             infoIcon.src = 'imagem/infoClose.svg';
 
-            // menu baixa
+            // Fecha o menu e corrige o ícone
             menu.classList.remove('open');
             openBtn.classList.remove('open');
-            icon.src = 'imagem/up.png';
+            icon.src = 'imagem/up.png'; // Ícone volta para fechado
 
         } else {
-            // popup none e troca para icon original
+            // Fecha apenas o popup e corrige o ícone de info
             popup.style.display = 'none';
             infoIcon.src = 'imagem/info.svg';
         }
     }
 });
-
-
-
-
