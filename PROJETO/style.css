@@ -242,10 +242,17 @@ body {
 }
 
 .titulo {
+    display: flex;
+    align-items: center;
     color: #ebebeb;
     font-size: 3rem;
     padding: 3%;
     opacity: 100%;
+    margin:10px;
+}
+
+#logoInfo {
+    padding-right: 10px;
 }
 
 @media only screen and (max-width: 1000px) {

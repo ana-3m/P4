@@ -112,31 +112,46 @@ const openBtn = document.getElementById("open");
 const menu = document.getElementById("menu");
 
 document.getElementById('iconInfo').addEventListener('click', () => {
-    if (selectedFilter && filterInfo[selectedFilter]) {
-        const info = filterInfo[selectedFilter];
-        const isVisible = popup.style.display === 'flex';
+    const isVisible = popup.style.display === 'flex';
 
-        if (!isVisible) {
-            // Atualiza o conteúdo do popup
-            document.getElementById('popupContent').innerHTML = `
-            <div class="titulo">${info.t}</div>
-            <div class="colunas">
-                <div class="coluna">${info.p1}</div>
-                <div class="coluna">${info.p2}</div>
-            </div>
-        `;
-            popup.style.display = 'flex';
-            infoIcon.src = 'imagem/infoClose.svg';
+    if (!isVisible) {
+        let infoContent = "";
 
-            // Fecha o menu e corrige o ícone
-            menu.classList.remove('open');
-            openBtn.classList.remove('open');
-            icon.src = 'imagem/up.png'; // Ícone volta para fechado
-
+        // Se houver um filtro selecionado, exibe a informação correspondente
+        if (selectedFilter && filterInfo[selectedFilter]) {
+            const info = filterInfo[selectedFilter];
+            infoContent = `
+                <div class="titulo">${info.t}</div>
+                <div class="colunas">
+                    <div class="coluna">${info.p1}</div>
+                    <div class="coluna">${info.p2}</div>
+                </div>
+            `;
         } else {
-            // Fecha apenas o popup e corrige o ícone de info
-            popup.style.display = 'none';
-            infoIcon.src = 'imagem/info.svg';
+            // Se **nenhum filtro estiver ativo**, exibe um texto genérico
+            infoContent = `
+                <div class="titulo"><img id="logoInfo" src="imagem/logo1.png" alt="logo" width="60" height="60">BLIND SPOT</div>
+                <div class="colunas">
+                    <div class="coluna">Nesta web app poderá experênciar algumas das várias condições que podem afetar a nossa visão.</div>
+                    <div class="coluna">1. Abra o menu abaixo e selecione os efeitos para entender melhor como as respetivas doenças afetam a visão.</div> 
+                    <div class="coluna">2. Pressione o botão de informação para saber mais sobre essa mesma doença.</div>
+                </div>
+            `;
         }
+
+        // Atualiza o conteúdo do popup
+        document.getElementById('popupContent').innerHTML = infoContent;
+        popup.style.display = 'flex';
+        infoIcon.src = 'imagem/infoClose.svg';
+
+        // Fecha o menu e corrige o ícone
+        menu.classList.remove('open');
+        openBtn.classList.remove('open');
+        icon.src = 'imagem/up.png';
+
+    } else {
+        // Fecha apenas o popup e corrige o ícone de info
+        popup.style.display = 'none';
+        infoIcon.src = 'imagem/info.svg';
     }
 });
