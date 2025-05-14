@@ -15,7 +15,16 @@ body {
     object-fit: cover;
     z-index: 1; /* Garante que a câmara não está acima do menu */
 }
-
+.logo{
+    display: inline-block; 
+   color: black; 
+    position:absolute;
+   
+   > p{ left: 5%;
+    top: 2%;
+    position: fixed;
+   }
+}
 #logo{
     position:fixed;
     top:2%;
