@@ -2,235 +2,114 @@
 <html lang="pt">
 
 <head>
-
   <meta charset="UTF-8">
-  <title>Menu Circular com Câmara de Fundo</title>
-  <style>
-    /* Reset e configuração da página */
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-
-    /* Vídeo de fundo (stream da câmara) */
-    #camera {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    /* Painel de menu branco que desliza */
-    #menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 600px;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    #menu.open {
-      transform: translateX(0%);
-    }
-
-    /* Ícone para abrir/fechar o menu */
-    #menuIcon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      border: 2px solid #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Lista de palavras – posicionada de forma relativa para permitir posicionamento absoluto dos itens */
-    #wordList {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    /* Cada item é posicionado absolutamente */
-    #wordList li {
-      position: absolute;
-      left: 50px;
-      white-space: nowrap;
-      font-size: 48px;
-      padding: 24px;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-  </style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de Scroll</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .menu {
-            width: 200px;
-            height: 300px;
-            overflow-y: scroll;
-            position: relative;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-        }
-
-        .menu::-webkit-scrollbar {
-            display: none;
-        }
-
-
-        .menu-item {
-    display: block;
-    font-size: 24px;
-    padding: 30px 20px; /* aumenta o espaçamento interno */
-    margin-bottom: 10px; /* espaçamento externo entre itens */
-    transition: opacity 0.1s ease-in-out;
-    text-align: center;
-    text-decoration: none; /* remove o sublinhado */
-    color: black; /* garante boa legibilidade */
-}
-
-    </style>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câmara com Menu - teste.html</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Vídeo de fundo -->
+  <!-- Vídeo de fundo com stream da câmara -->
   <video id="camera" autoplay playsinline></video>
+  <div id="NOT">
+    <!-- Botão para alternar a câmera -->
+    <img id="changeCam" src="imagem/changeCam.svg" alt="Mudar a camara" width="60" height="60">
 
-  <!-- Menu com forma circular -->
-  <div id="menu">
-    <ul id="wordList">
-      <li>Tritanopia</li>
-      <li>Protanopia</li>
-      <li>Nistagmo</li>   <!-- Ativar filtro abanar -->
-      <li>Glaucoma</li>
-      <li>Miopia</li>
-      <li>Estrabismo</li>
-      <li>Acromatopsia</li>
-      <li>Deuteranopia</li>
+    <img id="logo" src="imagem/logo.svg" alt="logo" width="60" height="60">
+    <div id="aboutUsOverlay">
+      <div id="aboutUsContent">
+        <div class="titulo"><img class="logoInfo" src="imagem/logo1.png" alt="logo" width="60" height="60">BLIND SPOT</div>
+        <div class="colunas">
+          <div class="coluna">Blind Spot é uma aplicação móvel, que a partir de filtros, cria diferentes perspectivas e
+            proporciona o utilizador a explorar uma perspectiva mais próxima da realidade vivida por muita gente com
+            doenças de baixa visão.</div>
+          <div class="coluna">Este projeto foi desenvolvido para a cadeira de Projeto 4 - Multimédia Interativo pelas
+            alunas Ana Catarina Almeida, Inês Costa e Ana Monteiro, alunas da Licenciatura de Design e Multimédia.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu escondido inicialmente -->
+    <ul id="menu">
+
+      <li class="word" data-filter="tritanopia">Tritanópia</li> <!-- daltonismo1 -->
+      <li class="word" data-filter="protanopia">Protanópia</li> <!--daltonismo2-->
+      <li class="word" data-filter="deuteranopia">Deuteranópia</li>
+      <li class="word" data-filter="acromatopsia">Acromatópsia</li>
+
+      <li class="word" id="estrabismoVertical">Estrabismo vertical</li> <!--duplica Vertiacl-->
+      <li class="word" id="estrabismoHorizontal">Estrabismo horizontal</li>
+      <li class="word" id="estrabismoComplexo">Estrabismo complexo</li>
+
+      <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
+
+      <li class="word" id="multiplosEscotomas">Multiplos escotomas</li>
+      <li class="word" id="escotomaBinasal">Escotoma binasal</li>
+      <li class="word" id="escotomaBitemporal">Escotoma bitemporal</li>
+      <li class="word" id="escotomaAltitudinalInferior">Escotoma altitudinal inferior</li>
+      <li class="word" id="escotomaAltitudinalSuperior">Escotoma altitudinal superior</li>
+      <li class="word" id="escotomaCentral">Escotoma central</li>
+      <li class="word" id="visaoTubular">Visão tubular</li>
+
+      <li class="word" id="cataratas">Cataratas</li>
+
     </ul>
+    <!-- Botão de abertura -->
+    <div id="open">
+      <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
+    </div>
+
+    <div id="topControls">
+      <img id="fullscreenButton" src="imagem/fullscreen.svg" alt="fullscreen" width="70" height="70">
+      <!-- Botão de abertura info -->
+      <div id="info">
+        <img id="iconInfo" src="imagem/info.svg" alt="Abrir info" width="70" height="70">
+      </div>
+    </div>
+    <div id="popupInfo">
+      <div id="popupContent"></div>
+    </div>
+  </div>
+  <!-- Overlay para instruir a rotação do dispositivo -->
+  <div id="rotateOverlay">
+    <img src="imagem/rotate.png" alt="Vire o telemóvel">
   </div>
 
-  <!-- Ícone para abrir/fechar o menu -->
-  <div id="menuIcon">&#9776;</div>
-
-  <script>
-    // 1. Ativar a câmara de fundo
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-          document.getElementById('camera').srcObject = stream;
-        })
-        .catch(function (err) {
-          console.error("Erro ao aceder à câmara:", err);
-        });
-    }
-
-    /*
-      2. Configurações para o menu circular:
-         - Usamos uma variável global "baseAngle" (em graus) para controlar a rotação inicial.
-         - Distribuímos os itens igualmente ao longo dos 360°.
-         - O scroll (evento wheel) incrementa ou decrementa "baseAngle", fazendo com que os itens girem.
-         - Calculamos a posição (x, y) de cada item com base na fórmula:
-               x = centerX + radius * cos(angle)
-               y = centerY + radius * sin(angle)
-         - A opacidade é ajustada conforme a diferença (em graus) entre o ângulo do item e o ângulo alvo (aqui, 90° – posição inferior).
-    */
-    let baseAngle = 0; // em graus
-    const wordList = document.getElementById('wordList');
-    const items = wordList.querySelectorAll('li');
-    const totalItems = items.length;
-
-    // Obtemos dimensões básicas do menu circular
-    const menu = document.getElementById('menu');
-    const menuWidth = menu.clientWidth;
-    const menuHeight = menu.clientHeight;
-    const centerX = menuWidth;
-    const centerY = menuHeight / 2;
-    const radius = centerX - 300; // margem para que o texto não fique colado na borda
-
-    // Ângulo alvo para opacidade máxima (ex: 90° = parte de baixo do círculo)
-    const targetAngle = 90;
-
-    function updateItems() {
-      const angleStep = 360 / totalItems;
-      items.forEach((item, index) => {
-        // Calcula o ângulo deste item somando o offset global (baseAngle)
-        let itemAngle = (baseAngle + index * angleStep) % 360;
-        if (itemAngle < 0) itemAngle += 360;
-        // Converter para radianos
-        const rad = itemAngle * Math.PI / 180;
-        // Posição x e y (centralizando o item)
-        const x = centerX + radius * Math.cos(rad) - item.offsetWidth / 2;
-        const y = centerY + radius * Math.sin(rad) - item.offsetHeight / 2;
-        item.style.left = `${x}px`;
-        item.style.top = `${y}px`;
-
-        // Cálculo da opacidade: quanto menor a diferença entre itemAngle e targetAngle, mais alta a opacidade
-        let diff = Math.abs(itemAngle - targetAngle);
-        if (diff > 180) diff = 360 - diff; // pega no menor ângulo
-        // Opacidade: 1 para diff = 0 e 0.2 para diff >= 90
-        const opacity = Math.max(0.2, 1 - (diff / 90) * 0.8);
-        item.style.opacity = opacity;
-      });
-    }
-
-    // Atualiza as posições e opacidades inicialmente
-    updateItems();
-
-    // 3. Evento de scroll para rotação infinita.
-    menu.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      // Ajusta o baseAngle de acordo com a direção do scroll (o fator 0.1 define a sensibilidade)
-      baseAngle += e.deltaY * 0.1;
-      updateItems();
-    });
-
-    // 4. Alternar a visibilidade do menu ao clicar no ícone
-    document.getElementById('menuIcon').addEventListener('click', function () {
-      menu.classList.toggle('open');
-    });
+  <script src="teste.js"></script>
+  <script src="info.js"></script>
+  <script src="effectManager.js"></script>
+  <script src="nistagmo.js"></script>
+  <script src="estrabismo.js"></script>
+  <script src="escotomas.js"></script>
+  <script src="daltonismo.js"></script>
+  <script src="cataratas.js"></script>
 
 
-    window.addEventListener('resize', updateItems);
-  </script>
 
+  <!-- DALTONISMO SVG-->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+    <defs>
+      <filter id="tritanopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.95 0.05  0     0 0
+                                          0     0.43  0.57  0 0
+                                          0     0     0.30  0 0
+                                          0     0     0     1 0" />
+      </filter>
+      <filter id="protanopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.57 0.43  0     0 0
+                                          0.56 0.44  0     0 0
+                                          0     0.24  0.76  0 0
+                                          0     0     0     1 0" />
+      </filter>
+      <filter id="deuteranopia-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.62 0.38  0     0 0
+                                          0.70 0.30  0     0 0
+                                          0     0.30  0.70  0 0
+                                          0     0     0     1 0" />
+      </filter>
+    </defs>
+  </svg>
 </body>
 
 </html>
