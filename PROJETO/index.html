@@ -12,49 +12,50 @@
 <body>
   <!-- Vídeo de fundo com stream da câmara -->
   <video id="camera" autoplay playsinline></video>
-  <!-- Botão para alternar a câmera -->
-  <img id="changeCam" src="imagem/changeCam.svg" alt="Mudar a camara" width="60" height="60">
+  <div id="NOT">
+    <!-- Botão para alternar a câmera -->
+    <img id="changeCam" src="imagem/changeCam.svg" alt="Mudar a camara" width="60" height="60">
 
-  <img id="logo" src="imagem/logo3.png" alt="logo" width="60" height="60">
+    <img id="logo" src="imagem/logo3.png" alt="logo" width="60" height="60">
 
-  <!-- Menu escondido inicialmente -->
-  <ul id="menu">
+    <!-- Menu escondido inicialmente -->
+    <ul id="menu">
 
-    <li class="word" data-filter="tritanopia">Tritanópia</li> <!-- daltonismo1 -->
-    <li class="word" data-filter="protanopia">Protanópia</li> <!--daltonismo2-->
-    <li class="word" data-filter="deuteranopia">Deuteranópia</li>
-    <li class="word" data-filter="acromatopsia">Acromatópsia</li>
+      <li class="word" data-filter="tritanopia">Tritanópia</li> <!-- daltonismo1 -->
+      <li class="word" data-filter="protanopia">Protanópia</li> <!--daltonismo2-->
+      <li class="word" data-filter="deuteranopia">Deuteranópia</li>
+      <li class="word" data-filter="acromatopsia">Acromatópsia</li>
 
-    <li class="word" id="estrabismoVertical">Estrabismo vertical</li> <!--duplica Vertiacl-->
-    <li class="word" id="estrabismoHorizontal">Estrabismo horizontal</li>
-    <li class="word" id="estrabismoComplexo">Estrabismo complexo</li>
+      <li class="word" id="estrabismoVertical">Estrabismo vertical</li> <!--duplica Vertiacl-->
+      <li class="word" id="estrabismoHorizontal">Estrabismo horizontal</li>
+      <li class="word" id="estrabismoComplexo">Estrabismo complexo</li>
 
-    <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
+      <li class="word" id="nistagmo">Nistagmo</li> <!--camara abana-->
 
-    <li class="word" id="multiplosEscotomas">Multiplos escotomas</li>
-    <li class="word" id="escotomaBinasal">Escotoma binasal</li>
-    <li class="word" id="escotomaBitemporal">Escotoma bitemporal</li>
-    <li class="word" id="escotomaAltitudinalInferior">Escotoma altitudinal inferior</li>
-    <li class="word" id="escotomaAltitudinalSuperior">Escotoma altitudinal superior</li>
-    <li class="word" id="escotomaCentral">Escotoma central</li>
-    <li class="word" id="visaoTubular">Visão tubular</li>
+      <li class="word" id="multiplosEscotomas">Multiplos escotomas</li>
+      <li class="word" id="escotomaBinasal">Escotoma binasal</li>
+      <li class="word" id="escotomaBitemporal">Escotoma bitemporal</li>
+      <li class="word" id="escotomaAltitudinalInferior">Escotoma altitudinal inferior</li>
+      <li class="word" id="escotomaAltitudinalSuperior">Escotoma altitudinal superior</li>
+      <li class="word" id="escotomaCentral">Escotoma central</li>
+      <li class="word" id="visaoTubular">Visão tubular</li>
 
-    <li class="word" id="cataratas">Cataratas</li>
+      <li class="word" id="cataratas">Cataratas</li>
 
-  </ul>
-  <!-- Botão de abertura -->
-  <div id="open">
-    <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
+    </ul>
+    <!-- Botão de abertura -->
+    <div id="open">
+      <img id="icon" src="imagem/up.png" alt="Abrir menu" width="70" height="70">
+    </div>
+
+    <!-- Botão de abertura info -->
+    <div id="info">
+      <img id="iconInfo" src="imagem/info.svg" alt="Abrir info" width="70" height="70">
+    </div>
+    <div id="popupInfo">
+      <div id="popupContent"></div>
+    </div>
   </div>
-
-  <!-- Botão de abertura info -->
-  <div id="info">
-    <img id="iconInfo" src="imagem/info.svg" alt="Abrir info" width="70" height="70">
-  </div>
-  <div id="popupInfo">
-    <div id="popupContent"></div>
-  </div>
-
   <!-- Overlay para instruir a rotação do dispositivo -->
   <div id="rotateOverlay">
     <img src="imagem/rotate.png" alt="Vire o telemóvel">

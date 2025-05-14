@@ -3,11 +3,15 @@
 // Função que verifica a orientação do dispositivo e exibe um overlay se estiver vertical
 function checkOrientation() {
   const overlay = document.getElementById("rotateOverlay");
+  const NotOverlay = document.getElementById("NOT");
   // Se a largura for menor que a altura (provavelmente em modo retrato)
   if (window.innerWidth < window.innerHeight) {
     overlay.style.display = "flex";  // mostra o overlay
+    NotOverlay.style.display = "none";   // oculta o overlay
+    
   } else {
     overlay.style.display = "none";   // oculta o overlay
+    NotOverlay.style.display = "block";   // oculta o overlay
   }
 }
 
