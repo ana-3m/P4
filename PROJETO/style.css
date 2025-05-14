@@ -210,6 +210,16 @@ body {
     opacity: 100%;
   }
 
+  @media only screen and (max-width: 600px) {
+    .titulo{
+    font-size: 0.5rem;
+  }
+  .coluna {
+    font-size: 0.2rem; /* ou outro tamanho que você achar adequado */
+  }
+}
+
+
   #rotateOverlay {
   position: fixed;
   top: 0;
