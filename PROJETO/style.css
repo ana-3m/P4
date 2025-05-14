@@ -144,6 +144,15 @@ body {
     cursor: pointer;
 }
 
+/* ====================== CAMARAS */
+
+#changeCam {
+     position: fixed; 
+     bottom: 20px; 
+     left: 20px; 
+     z-index: 5;
+}
+
 /* ====================== INFORMACAO */
 
 #info {
@@ -213,13 +222,14 @@ body {
     opacity: 100%;
 }
 
-  @media only screen and (max-width: 1000px) {
-    .titulo{
-    font-size: 1.5rem;
-  }
-  .coluna {
-    font-size:1rem;
-  } 
+@media only screen and (max-width: 1000px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .coluna {
+        font-size: 1rem;
+    }
 }
 
 

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Configura o botão de trocar câmera
-  const toggleCameraButton = document.getElementById("toggleCameraButton");
+  const toggleCameraButton = document.getElementById("changeCam");
   toggleCameraButton.addEventListener("click", function() {
     // Altera entre "environment" (traseira) e "user" (frontal)
     currentFacingMode = (currentFacingMode === "environment") ? "user" : "environment";
