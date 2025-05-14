@@ -127,7 +127,13 @@ const aboutUS = document.getElementById("aboutUsOverlay")
 logoBS.addEventListener("click", function () {
   if (aboutUS.style.display === "flex") {
     aboutUS.style.display = "none";
+    logoBS.src = 'imagem/logo.svg';
+    logoBS.width = '60';
+    logoBS.height = '60';
   } else {
     aboutUS.style.display = "flex";
+    logoBS.src = 'imagem/closeAboutUS.svg';
+    logoBS.width = '45';
+    logoBS.height = '45';
   }
 });
