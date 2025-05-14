@@ -87,8 +87,6 @@ function startCamera(facingMode) {
     });
 }
 
-
-
 // INICIALIZAÇÃO AO CARREGAR A PÁGINA
 document.addEventListener("DOMContentLoaded", () => {
   // Inicia a câmera usando a traseira
@@ -132,8 +130,8 @@ logoBS.addEventListener("click", function () {
     logoBS.height = '60';
   } else {
     aboutUS.style.display = "flex";
-    logoBS.src = 'imagem/closeAboutUS.svg';
+    logoBS.src = 'imagem/closeAboutUs.svg';
     logoBS.width = '45';
-    logoBS.height = '45';
+    logoBS.height = '35';
   }
 });

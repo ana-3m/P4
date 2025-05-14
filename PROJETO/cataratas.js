@@ -60,7 +60,17 @@ function drawCataratas() {
     
     // Aplica efeito de blur
     ctx.filter = "blur(8px)";
-    ctx.drawImage(camera, 0, 0, cataratasCanvas.width, cataratasCanvas.height);
+
+    // Detecta se a câmera ativa é frontal
+    if (currentFacingMode === "user") {
+        ctx.save();  // Salva o estado atual do contexto
+        ctx.scale(-1, 1); // Inverte horizontalmente
+        ctx.drawImage(camera, -cataratasCanvas.width, 0, cataratasCanvas.width, cataratasCanvas.height);
+        ctx.restore(); // Restaura o estado original do contexto
+    } else {
+        // Se for a câmera traseira, desenha normalmente
+        ctx.drawImage(camera, 0, 0, cataratasCanvas.width, cataratasCanvas.height);
+    }
 
     // Overlay branco translúcido
     ctx.filter = "none";
