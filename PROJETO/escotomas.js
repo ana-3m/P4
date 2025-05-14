@@ -48,7 +48,9 @@ const ESCOTOMAS_EFFECTS = {
         radius: 10, // Raio da área central clara
     }
 };
-//desenho dos escotomas
+
+// ******************************* DESENHO DOS ESCOTOMAS ***************************
+
 function drawScotomaWithRadialGradient(ctx, centerX, centerY, innerRadius, outerRadius) {
     let gradient = ctx.createRadialGradient(centerX, centerY, innerRadius, centerX, centerY, outerRadius);
     gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');   // Centro totalmente opaco
@@ -124,7 +126,6 @@ function drawAltitudinalInferiorEffect(ctx, width, height) {
     ctx.fillRect(0, height / 2, width, height / 2);
 }
 
-
 function drawAltitudinalSuperiorEffect(ctx, width, height) {
     const gradient = ctx.createLinearGradient(0, 0, 0, height / 2);
     gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');    // Opaco no topo
@@ -135,8 +136,8 @@ function drawAltitudinalSuperiorEffect(ctx, width, height) {
     ctx.fillRect(0, 0, width, height / 2);
 }
 
+// ************************ IMLEMENTAÇÃO DOS FILTROS **************
 
-//implementação de filtros
 let currentCanvasOverlay = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -170,6 +171,8 @@ function setupOcularMenuListeners() {
 
 function activateOcularEffect(effect) {
     deactivateOcularEffect(effect);
+
+    selectedEffect = effect.id; // Atualiza qual efeito está ativo
 
     const canvas = document.createElement('canvas');
     canvas.id = "canvasOverlay";
