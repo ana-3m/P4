@@ -37,8 +37,12 @@ body {
     position: fixed;
     top: 2%;
     left: 1%;
+<<<<<<< HEAD:PROJETO/style.css
 
 
+=======
+    z-index: 26;
+>>>>>>> 091f76070b0fa45e27428ecf03ccce0f76651485:style.css
 }
 
 /* Menu que desliza a partir da parte inferior */
@@ -164,28 +168,30 @@ body {
 /* ====================== CAMARAS */
 
 #changeCam {
-     position: fixed; 
-     bottom: 20px; 
-     left: 20px; 
-     z-index: 5;
-}
-
-/* ====================== FULLSCREEN */
-
-#fullscreenButton {
     position: fixed;
-    top: 2%;
-    right: 5%;
-    z-index: 100;
+    bottom: 2%;
+    left: 2%;
+    z-index: 5;
 }
 
-/* ====================== INFORMACAO */
 
-#info {
+/* Contêiner para agrupar os botões */
+#topControls {
     position: fixed;
     top: 2%;
     right: 1%;
+    display: flex;
+    gap: 10px;
+    /* Espaço entre os elementos */
+    align-items: center;
     z-index: 100;
+}
+
+/* Ajuste para os botões dentro do contêiner */
+#fullscreenButton,
+#info {
+    position: static;
+    /* Remove o "fixed" direto dos botões */
 }
 
 /*
@@ -219,7 +225,23 @@ body {
     z-index: 50;
 }
 
-#popupContent {
+#aboutUsOverlay {
+    display: none;
+    background-color: #232323;
+    opacity: 100%;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    color: white;
+    z-index: 25;
+}
+
+#popupContent,
+#aboutUsContent {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -242,10 +264,17 @@ body {
 }
 
 .titulo {
+    display: flex;
+    align-items: center;
     color: #ebebeb;
     font-size: 3rem;
     padding: 3%;
     opacity: 100%;
+    margin: 10px;
+}
+
+.logoInfo {
+    padding-right: 10px;
 }
 
 @media only screen and (max-width: 1000px) {
