@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (docEl.msRequestFullscreen) {
         docEl.msRequestFullscreen();
       }
-      fullscreenBtn.textContent = "❌ Sair do Ecrã Cheio"; // Atualiza o botão
     } else {
       // Se já está em ecrã completo, sai
       if (document.exitFullscreen) {
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
       }
-      fullscreenBtn.textContent = "🔳 Ecrã Completo"; // Atualiza o botão
     }
   });
 });
