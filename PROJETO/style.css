@@ -148,12 +148,29 @@ body {
 
 #changeCam {
      position: fixed; 
-     bottom: 20px; 
-     left: 20px; 
+     bottom: 2%; 
+     left: 2%; 
      z-index: 5;
 }
 
-/* ====================== FULLSCREEN */
+
+/* Contêiner para agrupar os botões */
+#topControls {
+    position: fixed;
+    top: 2%;
+    right: 1%;
+    display: flex;
+    gap: 10px; /* Espaço entre os elementos */
+    align-items: center;
+    z-index: 100;
+}
+
+/* Ajuste para os botões dentro do contêiner */
+#fullscreenButton, #info {
+    position: static; /* Remove o "fixed" direto dos botões */
+}
+
+/* ====================== FULLSCREEN 
 
 #fullscreenButton {
     position: fixed;
@@ -162,14 +179,14 @@ body {
     z-index: 100;
 }
 
-/* ====================== INFORMACAO */
+/* ====================== INFORMACAO 
 
 #info {
     position: fixed;
     top: 2%;
     right: 1%;
     z-index: 100;
-}
+}*/
 
 /*
 #popupInfo {
