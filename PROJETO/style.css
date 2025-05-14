@@ -21,7 +21,7 @@ body {
     position: fixed;
     top: 2%;
     left: 1%;
-
+    z-index: 51;
 }
 
 /* Menu que desliza a partir da parte inferior */
@@ -147,10 +147,10 @@ body {
 /* ====================== CAMARAS */
 
 #changeCam {
-     position: fixed; 
-     bottom: 2%; 
-     left: 2%; 
-     z-index: 5;
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    z-index: 5;
 }
 
 
@@ -160,33 +160,18 @@ body {
     top: 2%;
     right: 1%;
     display: flex;
-    gap: 10px; /* Espaço entre os elementos */
+    gap: 10px;
+    /* Espaço entre os elementos */
     align-items: center;
     z-index: 100;
 }
 
 /* Ajuste para os botões dentro do contêiner */
-#fullscreenButton, #info {
-    position: static; /* Remove o "fixed" direto dos botões */
-}
-
-/* ====================== FULLSCREEN 
-
-#fullscreenButton {
-    position: fixed;
-    top: 2%;
-    right: 5%;
-    z-index: 100;
-}
-
-/* ====================== INFORMACAO 
-
+#fullscreenButton,
 #info {
-    position: fixed;
-    top: 2%;
-    right: 1%;
-    z-index: 100;
-}*/
+    position: static;
+    /* Remove o "fixed" direto dos botões */
+}
 
 /*
 #popupInfo {
@@ -204,7 +189,8 @@ body {
   }
     */
 
-#popupInfo {
+#popupInfo,
+#aboutUsOverlay {
     display: none;
     background-color: #232323;
     opacity: 100%;
@@ -219,7 +205,8 @@ body {
     z-index: 50;
 }
 
-#popupContent {
+#popupContent,
+#aboutUsContent {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -248,10 +235,10 @@ body {
     font-size: 3rem;
     padding: 3%;
     opacity: 100%;
-    margin:10px;
+    margin: 10px;
 }
 
-#logoInfo {
+.logoInfo {
     padding-right: 10px;
 }
 

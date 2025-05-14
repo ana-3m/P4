@@ -130,7 +130,7 @@ document.getElementById('iconInfo').addEventListener('click', () => {
         } else {
             // Se **nenhum filtro estiver ativo**, exibe um texto genérico
             infoContent = `
-                <div class="titulo"><img id="logoInfo" src="imagem/logo1.png" alt="logo" width="60" height="60">BLIND SPOT</div>
+                <div class="titulo"><img class="logoInfo" src="imagem/logo1.png" alt="logo" width="60" height="60">BLIND SPOT</div>
                 <div class="colunas">
                     <div class="coluna">Nesta web app poderá experênciar algumas das várias condições que podem afetar a nossa visão.</div>
                     <div class="coluna">1. Abra o menu abaixo e selecione os efeitos para entender melhor como as respetivas doenças afetam a visão.</div> 

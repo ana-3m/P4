@@ -118,3 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
     startCamera(currentFacingMode);
   });
 });
+
+// ********** about us ***********
+
+const logoBS = document.getElementById("logo");
+const aboutUS = document.getElementById("aboutUsOverlay")
+
+logoBS.addEventListener("click", function () {
+  if (aboutUS.style.display === "flex") {
+    aboutUS.style.display = "none";
+  } else {
+    aboutUS.style.display = "flex";
+  }
+});
