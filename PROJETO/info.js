@@ -54,33 +54,33 @@ const filterInfo = {
     },
     escotomaBitemporal: {
         t: "Escotoma Bitemporal",
-        p1: "O escotoma binasal apresenta a ausência de visão campo temporal de cada olho, o que reduz a percepção dos detalhes na parte externa do campo visual.",
-        p2: "Essa condição está frequentemente ligada a alterações ou lesões no quiasma ótico, que comprometem a decussação das fibras visuais, resultando em áreas cegas laterais."
+        p1: "O escotoma bitemporal apresenta a ausência de visão campo temporal de cada olho, o que reduz a percepção dos detalhes na parte externa do campo visual.",
+        p2: "Essa condição está frequentemente ligada a doenças das vias óticas a nível do quiasma ótico, resultando em áreas cegas laterais."
     },
     escotomaAltitudinalInferior: {
         t: "Escotoma Altitudinal Inferior",
-        p1: "O escotoma altitudinal inferior se manifesta pela perda de visão na metade inferior do campo visual, deixando uma área de déficit na percepção da parte baixa.",
-        p2: "Essa anomalia geralmente ocorre devido a oclusões vasculares na retina superior, e pode interferir significativamente em atividades que dependem da visão periférica inferior."
+        p1: "O escotoma altitudinal inferior apresenta uma pela perda de visão na metade inferior do campo visual, resultando numa área cegas inferior",
+        p2: "É uma condição que geralmente ocorre devido a uma oclusão vascular da retina superior, e pode interferir significativamente em atividades que dependem da visão periférica inferior."
     },
     escotomaAltitudinalSuperior: {
         t: "Escotoma Altitudinal Superior",
-        p1: "O escotoma altitudinal superior caracteriza-se pela ausência de visão na metade superior do campo visual, gerando uma lacuna na percepção da região elevada.",
-        p2: "Em geral, essa condição resulta de problemas vasculares na retina inferior, afetando a capacidade de captar informações visuais na parte superior do campo e prejudicando funções visuais essenciais."
+        p1: "O escotoma altitudinal superior caracteriza-se pela perda de visão na metade superior do campo visual, gerando uma lacuna na percepção da região superior.",
+        p2: "É uma condição que resulta de uma oclusão vascular da retina inferior, afetando a capacidade de captar informações visuais na parte superior do campo."
     },
     escotomaCentral: {
         t: "Escotoma Central",
-        p1: "O escotoma central consiste na perda de visão na região central do campo visual, onde se concentra a acuidade necessária para tarefas detalhadas, como leitura.",
-        p2: "Frequentemente ligado à Degenerescência Macular da Idade, esse déficit central compromete o reconhecimento de rostos e objetos, tendo um forte impacto na realização das atividades diárias."
+        p1: "O escotoma central consiste na perda de visão na região central do campo visual, apresentando uma mancha no centro da visão.",
+        p2: "Frequentemente ligado à Degenerescência Macular da Idade (DMI), é uma condição que compromete o reconhecimento de rostos e objetos, tendo um forte impacto na realização das atividades diárias."
     },
     visaoTubular: {
         t: "Visão Tubular",
-        p1: "A visão tubular é uma condição em que há uma drástica redução do campo visual periférico, fazendo com que o indivíduo enxergue o ambiente como se estivesse observando através de um tubo e preservando apenas a visão central.",
-        p2: "Comum em estágios avançados de glaucoma ou em doenças degenerativas da retina, essa limitação visual dificulta a percepção do ambiente ao redor e impõe desafios significativos às atividades diárias."
+        p1: "A visão tubular é uma condição em que há uma drástica redução do campo visual periférico, fazendo com que o indivíduo observe o ambiente como se o visse através de um tubo e preservando apenas a visão central.",
+        p2: "É muito presente já num estádio final de glaucoma ou em doenças degenerativas da retina. Assim, é uma limitação visual quee dificulta a percepção do ambiente ao redor e impõe desafios significativos às atividades diárias."
     },
     cataratas: {
         t: "Cataratas",
-        p1: "As cataratas se caracterizam pela opacificação gradual do cristalino, o que resulta em visão turva e perda progressiva da nitidez visual. Essa alteração afeta a capacidade de ver com clareza, comprometendo o desempenho visual.",
-        p2: "Comumente associadas à idade, as cataratas podem impactar severamente a qualidade de vida, pois dificultam desde a leitura até a condução, tendo, em estágios avançados, indicação para cirurgia."
+        p1: "As cataratas caracterizam-se pela opacificação gradual do cristalino, o que resulta em visão turva e perda progressiva da nitidez visual. Estas podem impactar severamente a qualidade de vida, pois dificultam desde a leitura até a condução.",
+        p2: "É uma condição que surge com a idade, podendo, raramente, surgir em crianças e jovens. Sendo esta uma condição que condiciona bastante as tarefas básicas, o seu diagnóstico vem acompanhado com a indicação de cirurgia."
     }
 };
 
