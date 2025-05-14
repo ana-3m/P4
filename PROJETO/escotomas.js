@@ -39,7 +39,7 @@ const ESCOTOMAS_EFFECTS = {
         id: 'escotomaCentral',
         type: 'central',
         positions: [
-            { x: 'center', y: 'center', size: 300 }
+            { x: 'center', y: 'center'/*, size: 300 */}
         ],
     },
     VISAO_TUBULAR: {
@@ -207,9 +207,10 @@ function activateOcularEffect(effect) {
     } else if (effect.type === 'altitudinalSuperior') {
         drawAltitudinalSuperiorEffect(ctx, canvas.width, canvas.height, effect.opacity);
     } else if (effect.type === 'central') {
-        effect.positions.forEach(({ x, y, size }) => {
+        effect.positions.forEach(({ x, y/*, size*/ }) => {
             if (x === 'center') x = canvas.width / 2;
             if (y === 'center') y = canvas.height / 2;
+            let size = canvas.width / 4;
             drawScotomaWithRadialGradient(ctx, x, y, 0, size);
         });
     } else if (effect.type === 'tubular') {
