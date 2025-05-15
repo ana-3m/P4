@@ -16,33 +16,30 @@ body {
     z-index: 1;
     /* Garante que a câmara não está acima do menu */
 }
- HEAD
-.logo{
-    display: inline-block; 
-   color: black; 
-    position:absolute;
-   
-   > p{ left: 5%;
-    top: 2%;
-    position: fixed;
-   }
-}
-#logo{
-    position:fixed;
-    top:2%;
-    left:1%; 
+
+HEAD .logo {
+    display: inline-block;
+    color: black;
+    position: absolute;
+
+    >p {
+        left: 5%;
+        top: 2%;
+        position: fixed;
+    }
 }
 
 #logo {
     position: fixed;
     top: 2%;
     left: 1%;
-<<<<<<< HEAD:PROJETO/style.css
+}
 
-
-=======
+#logo {
+    position: fixed;
+    top: 2%;
+    left: 1%;
     z-index: 26;
->>>>>>> 091f76070b0fa45e27428ecf03ccce0f76651485:style.css
 }
 
 /* Menu que desliza a partir da parte inferior */
@@ -284,6 +281,32 @@ body {
 
     .coluna {
         font-size: 1rem;
+    }
+
+    #menu {
+        height: 70px;
+    }
+
+    /* Reduz o tamanho da fonte dos itens do menu */
+    #menu .word {
+        font-size: 2rem;
+        /* Antes era 3rem */
+        padding: 35px 10px;
+        /* Reduz o padding para itens menores */
+        margin: 0 10px;
+        /* Reduz um pouco as margens horizontais */
+        display: flex;
+        /* Usa Flexbox */
+        align-items: center;
+        /* Centraliza verticalmente */
+        justify-content: center;
+        /* Centraliza horizontalmente */
+        text-align: center;
+        /* Garante que o texto fique alinhado ao centro */
+    }
+
+    #open.open {
+        transform: translateX(-50%) translateY(-70px);
     }
 }
 
