@@ -26,7 +26,7 @@ let currentEffectElement = null;
 document.addEventListener('DOMContentLoaded', () => {
     // Registra todos os efeitos no EffectManager
     registerStrabismusEffects();
-    
+
     // Configura os listeners dos itens do menu
     setupMenuListeners();
 });
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function registerStrabismusEffects() {
     for (const effectKey in EFFECTS) {
         const effect = EFFECTS[effectKey];
-        
+
         EffectManager.registerEffect(
             effect.id,
             () => activateStrabismusEffect(effect),
@@ -49,7 +49,7 @@ function setupMenuListeners() {
     for (const effectKey in EFFECTS) {
         const effect = EFFECTS[effectKey];
         const menuItem = document.getElementById(effect.id);
-        
+
         if (menuItem) {
             menuItem.addEventListener('click', () => {
                 EffectManager.activateEffect(effect.id);
@@ -62,7 +62,7 @@ function setupMenuListeners() {
 function activateStrabismusEffect(effect) {
     // Remove qualquer efeito anterior
     deactivateStrabismusEffect(effect);
-    
+
     // Obtém o stream da câmera principal
     const mainCamera = document.getElementById('camera');
     if (!mainCamera?.srcObject) return;
@@ -71,7 +71,8 @@ function activateStrabismusEffect(effect) {
     currentEffectElement = document.createElement('video');
     currentEffectElement.className = `camera-effect ${effect.id}`;
     currentEffectElement.autoplay = true;
-    currentEffectElement.playsinline = true;
+    currentEffectElement.playsInline = true; 
+    currentEffectElement.webkitPlaysInline = true;
     currentEffectElement.srcObject = mainCamera.srcObject;
 
     // Define a transformação base – se a câmera estiver no modo frontal, já deve estar invertida;
@@ -99,7 +100,7 @@ function activateStrabismusEffect(effect) {
 
     // Adiciona ao documento
     document.body.appendChild(currentEffectElement);
-    
+
     // Atualiza o item do menu
     document.getElementById(effect.id).classList.add('ativo');
 }
@@ -111,7 +112,7 @@ function deactivateStrabismusEffect(effect) {
         currentEffectElement.remove();
         currentEffectElement = null;
     }
-    
+
     // Remove a classe 'ativo' do item do menu
     const menuItem = document.getElementById(effect.id);
     if (menuItem) menuItem.classList.remove('ativo');
@@ -126,7 +127,7 @@ function deactivateAllStrabismusEffects() {
 }
 
 // Adiciona ao EffectManager a função para desativar todos os efeitos
-window.deactivateAllEffects = function() {
+window.deactivateAllEffects = function () {
     deactivateAllStrabismusEffects();
     // Outros efeitos podem ser adicionados aqui
 };
