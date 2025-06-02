@@ -20,8 +20,12 @@ function startNistagmo() {
     let direction = 1;
     const speed = 70;
     
+    // Define o baseline: se a câmera for frontal, ela já foi configurada com scaleX(-1) em startCamera
+    const baseTransform = (currentFacingMode === "user") ? "scaleX(-1)" : "";
+    
     nistagmoInterval = setInterval(() => {
-        camera.style.transform = `translateX(${direction * 5}px) scaleX(${(window.innerWidth + 2) / window.innerWidth})`;
+        // Apenas acrescenta a translação ao baseline já configurado
+        camera.style.transform = `${baseTransform} translateX(${direction * 5}px)`;
         direction *= -1;
     }, speed);
     
@@ -32,7 +36,8 @@ function stopNistagmo() {
     if (nistagmoInterval) {
         clearInterval(nistagmoInterval);
         nistagmoInterval = null;
-        document.getElementById('camera').style.transform = 'translateX(0px) scaleX(1)';
+        // Restaura o baseline: se frontal, mantém o scaleX(-1); se não, sem escala.
+        document.getElementById('camera').style.transform = (currentFacingMode === "user") ? "scaleX(-1)" : "";
         document.getElementById('nistagmo').classList.remove('ativo');
     }
 }
