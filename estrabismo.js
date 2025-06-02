@@ -10,7 +10,7 @@ const EFFECTS = {
     HORIZONTAL: {
         id: 'estrabismoHorizontal',
         transform: 'translateX(20px)',
-        color:'rgba(20, 20, 20, 0.7)'
+        color: 'rgba(20, 20, 20, 0.7)'
     },
     DIAGONAL: {
         id: 'estrabismoComplexo',
@@ -74,7 +74,15 @@ function activateStrabismusEffect(effect) {
     currentEffectElement.playsinline = true;
     currentEffectElement.srcObject = mainCamera.srcObject;
 
-    // Aplica os estilos
+    // Define a transformação base – se a câmera estiver no modo frontal, já deve estar invertida;
+    // para os efeitos, concatenamos: se estiver frontal, usamos "scaleX(-1) " + efeito, 
+    // caso contrário, apenas o efeito.
+    let baseTransform = "";
+    if (currentFacingMode === "user") {
+        baseTransform = "scaleX(-1) ";
+    }
+
+    // Aplica os estilos com os prefixos para compatibilidade em dispositivos móveis
     currentEffectElement.style.cssText = `
         position: fixed;
         top: 0;
@@ -83,7 +91,8 @@ function activateStrabismusEffect(effect) {
         height: 100vh;
         object-fit: cover;
         opacity: 0.4;
-        transform: ${effect.transform};
+        transform: ${baseTransform}${effect.transform};
+        -webkit-transform: ${baseTransform}${effect.transform};
         z-index: 1;
         pointer-events: none;
     `;
